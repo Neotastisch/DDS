@@ -6,6 +6,8 @@ local adverbmsg = getgenv().adverbmsg
 
 local alts = getgenv().alts
 
+local fps = getgenv().fps
+
 local webhook = getgenv().webhook
 
 
@@ -23,6 +25,7 @@ local dropping = false
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 local Plr = game:GetService("Players").LocalPlayer
+local HttpService = game:GetService("HttpService");
 
 local players, replicatedStorage = game:GetService("Players"), game:GetService("ReplicatedStorage");
 local defaultChatSystemChatEvents = replicatedStorage:FindFirstChild("DefaultChatSystemChatEvents");
@@ -35,12 +38,20 @@ chatFrame.ChatBarParentFrame.Position = chatFrame.ChatChannelParentFrame.Positio
 
 if table.find(alts, player.name) then
 game:GetService("RunService"):Set3dRenderingEnabled(false)
+setfpscap(fps)
 end
 
 local withlimit = false
 
 local cashdropped = 0
 local stopcash = 0
+
+local vu = game:GetService("VirtualUser")
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+wait(1)
+vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+end)
 
 local function onChatted(p,msg)
     if player.name==admin then
@@ -115,7 +126,6 @@ local function onChatted(p,msg)
             if Plr.Backpack:FindFirstChild("Combat") and Plr.Character:FindFirstChild("Combat") == nil then
                         local tool = Plr.Backpack:FindFirstChild("Combat")
                         Plr.Character.Humanoid:EquipTool(tool)
-                        Plr.Character.Humanoid:Activate(tool)
              end
         end
         if msg:match(prefix.."setup") then
@@ -154,15 +164,7 @@ while wait() do
         else
             dropping = false
             game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("End","All")
-            local data = {
-                ['WebhookURL'] = webhook
-                ['WebhookData'] = {['username']='DDS', ['content']='Done dropping!'}
-            }
-            local https = game:GetService('HttpService')
-            local data = https:JSONEncode(data)
-            local success,errorm = pcall(function()
-                https:PostAsync('https://bloxrank.net/api/webhook/', data, content_type=Enum.HttpContentType.ApplicationJson)
-            end)
+            SendMessage(webhook, "Done dropping.", "DDS-Bot")
             cashdropped = 0
         end
     end
@@ -177,4 +179,21 @@ while wait() do
         game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(adverbmsg,"All")
         wait(9.5)
     end
+end
+
+
+--
+function SendMessage(Webhook, Message, Botname)
+   local Name;
+   local WakeUp = game:HttpGet("http://buritoman69.glitch.me");
+   local API = "http://buritoman69.glitch.me/webhook";
+   local Body = {
+       ['Key'] = tostring("applesaregood"),
+       ['Message'] = tostring(Message),
+       ['Name'] = Name,
+       ['Webhook'] = Webhook    
+   }
+   Body = HttpService:JSONEncode(Body);
+   local Data = game:GetService("HttpService"):PostAsync(API, Body, false, "application/json")
+   return Data or nil;
 end
