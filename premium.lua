@@ -10,7 +10,6 @@ local fps = getgenv().fps
 
 local webhook = getgenv().webhook
 
-
 local adminpositions = {{-870,-38,-550},{-870,-38,-570},{-870,-38,-590},{-870,-38,-610}}
 
 --local adminpositionspremium = {(-870,-38,-550),(-870,-38,-570),(-870,-38,-590),(-870,-38,-610),(-900,-38,-550),(-900,-38,-570),(-900,-38,-590),(-900,-38,-610)}
@@ -54,6 +53,13 @@ vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 end)
 
 local function onChatted(p,msg)
+    local adminPlayer = Players:FindFirstChild(admin)
+    if adminPlayer:GetRankInGroup(16402091) > 1 then
+    print("You have not bought Premium!")
+    return 
+    end
+    
+    
     if player.name==admin then
          if msg:match(prefix.."tpto") then
             local targetPlayer = Players:FindFirstChild(string.split(msg," ")[2])
