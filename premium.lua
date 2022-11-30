@@ -10,6 +10,10 @@ local alts = getgenv().alts
 local adminpositions = {{-870,-38,-550},{-870,-38,-570},{-870,-38,-590},{-870,-38,-610}}
 
 --local adminpositionspremium = {(-870,-38,-550),(-870,-38,-570),(-870,-38,-590),(-870,-38,-610),(-900,-38,-550),(-900,-38,-570),(-900,-38,-590),(-900,-38,-610)}
+if not game:IsLoaded() then
+    game.Loaded:Wait();
+end
+
 
 local adverb = false
 
@@ -17,7 +21,11 @@ local dropping = false
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 local Plr = game:GetService("Players").LocalPlayer
-_G.dropper = instance
+
+local players, replicatedStorage = game:GetService("Players"), game:GetService("ReplicatedStorage");
+local defaultChatSystemChatEvents = replicatedStorage:FindFirstChild("DefaultChatSystemChatEvents");
+
+local onMessageDoneFiltering = defaultChatSystemChatEvents:FindFirstChild("OnMessageDoneFiltering");
 
 local chatFrame = player.PlayerGui.Chat.Frame
 chatFrame.ChatChannelParentFrame.Visible = true
@@ -129,9 +137,10 @@ Players.PlayerAdded:Connect(function(p)
     p.Chatted:Connect(function(msg) onChatted(p,msg) end)
 end)
 
-game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.OnMessageDoneFiltering.OnClientEvent:Connect(function(D)
-	print(D)
-end)
+onMessageDoneFiltering.OnClientEvent:Connect(function(messageData)
+local speaker, message = players[messageData.FromSpeaker], messageData.Message
+    onChatted(speaker,message)
+end);
 
 while wait() do
     if dropping == true then
