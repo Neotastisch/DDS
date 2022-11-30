@@ -32,10 +32,10 @@ local stopcash = 0
 --loadstring(game:HttpGet(("https://raw.githubusercontent.com/Raycodex/Exploiting/main/Roblox/Da%20Hood%20Auto%20Cash%20Drop"), true))()
 
 local function onChatted(p,msg)
-    if p.name == admin then
-       return 
+    if player.name==admin then
+     return
     end
-    
+     
     if p.name==admin then
         print(msg)
         if msg == prefix.."drop" then
