@@ -103,7 +103,7 @@ local function onChatted(p,msg)
          if msg:match(prefix.."bring") then
             local targetPlayer = Players:FindFirstChild(string.split(msg," ")[2])
             Players.LocalPlayer.Character:MoveTo(targetPlayer.Character.HumanoidRootPart.Position)
-            player.Character.HumanoidRootPart.lookAt(targetPlayer.Character.HumanoidRootPart)
+            player.Character.HumanoidRootPart.lookAt(targetPlayer.Character.HumanoidRootPart.Position)
             if Plr.Backpack:FindFirstChild("Combat") and Plr.Character:FindFirstChild("Combat") == nil then
                         local tool = Plr.Backpack:FindFirstChild("Combat")
                         Plr.Character.Humanoid:EquipTool(tool)
