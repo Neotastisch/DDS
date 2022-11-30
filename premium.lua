@@ -119,6 +119,14 @@ local function onChatted(p,msg)
                     end
             end
         end
+        if msg == prefix.."airlock" then
+           local position = Players.LocalPlayer.Character.HumanoidRootPart.Position
+           Players.LocalPlayer.Character.HumanoidRootPart.Position = position.x,position.y+10,position.z
+           Players.LocalPlayer.Character:findFirstChild("Torso").Anchored = true
+        end
+         if msg == prefix.."unlock" then
+           Players.LocalPlayer.Character:findFirstChild("Torso").Anchored = false
+        end
         if msg == prefix.."host" then
             print("Moving to admin.")
             local targetPlayer = Players:FindFirstChild(admin)
