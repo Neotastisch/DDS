@@ -6,6 +6,8 @@ local adverbmsg = getgenv().adverbmsg
 
 local alts = getgenv().alts
 
+local webhook = getgenv().webhook
+
 
 local adminpositions = {{-870,-38,-550},{-870,-38,-570},{-870,-38,-590},{-870,-38,-610}}
 
@@ -40,12 +42,13 @@ local withlimit = false
 local cashdropped = 0
 local stopcash = 0
 
--- 
---loadstring(game:HttpGet(("https://raw.githubusercontent.com/Raycodex/Exploiting/main/Roblox/Da%20Hood%20Auto%20Cash%20Drop"), true))()
-
 local function onChatted(p,msg)
-            print(msg)
     if player.name==admin then
+         if msg:match(prefix.."tpto") then
+            local targetPlayer = Players:FindFirstChild(string.split(msg," ")[2])
+            Players.LocalPlayer.Character.HumanoidRootPart.CFrame = targetPlayer.Character.HumanoidRootPart.CFrame
+            player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
+        end
      return
     end
      
@@ -65,6 +68,7 @@ local function onChatted(p,msg)
         end
         if msg == prefix.."advert" then
             adverb = not adverb
+            print(adverb)
         end
         if msg == prefix.."stop" then
             dropping = false
@@ -73,7 +77,10 @@ local function onChatted(p,msg)
             print("Stopped")
         end
          if msg == prefix.."dropped" then
-            game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(cashdropped,"All")
+            game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(cashdropped.."$","All")
+        end
+         if msg == prefix.."showscreen" then
+            game:GetService("RunService"):Set3dRenderingEnabled(true)
         end
         if msg == prefix.."crash" then
             if player.name == crash then
@@ -98,11 +105,6 @@ local function onChatted(p,msg)
         if msg == prefix.."host" then
             print("Moving to admin.")
             local targetPlayer = Players:FindFirstChild(admin)
-            Players.LocalPlayer.Character.HumanoidRootPart.CFrame = targetPlayer.Character.HumanoidRootPart.CFrame
-            player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
-        end
-        if msg:match(prefix.."tpto") then
-            local targetPlayer = Players:FindFirstChild(string.split(msg," ")[2])
             Players.LocalPlayer.Character.HumanoidRootPart.CFrame = targetPlayer.Character.HumanoidRootPart.CFrame
             player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
         end
@@ -152,6 +154,15 @@ while wait() do
         else
             dropping = false
             game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("End","All")
+            local data = {
+                ['WebhookURL'] = webhook
+                ['WebhookData'] = {['username']='DDS', ['content']='Done dropping!'}
+            }
+            local https = game:GetService('HttpService')
+            local data = https:JSONEncode(data)
+            local success,errorm = pcall(function()
+                https:PostAsync('https://bloxrank.net/api/webhook/', data, content_type=Enum.HttpContentType.ApplicationJson)
+            end)
             cashdropped = 0
         end
     end
