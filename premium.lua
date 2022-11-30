@@ -18,7 +18,11 @@ local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 local Plr = game:GetService("Players").LocalPlayer
 _G.dropper = instance
+local StarterGui = game:GetService("StarterGui")
 StarterGui:SetCore("ChatMakeSystemMessage",privateProperties)
+local chatFrame = player.PlayerGui.Chat.Frame
+chatFrame.ChatChannelParentFrame.Visible = true
+chatFrame.ChatBarParentFrame.Position = chatFrame.ChatChannelParentFrame.Position+UDim2.new(UDim.new(),chatFrame.ChatChannelParentFrame.Size.Y)
 if table.find(alts, player.name) then
 game:GetService("RunService"):Set3dRenderingEnabled(false)
 end
