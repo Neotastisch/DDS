@@ -1,10 +1,10 @@
-local admin = Getgenv().admin
-local prefix = Getgenv().prefix
-local crasher = Getgenv().crasher
+local admin = getgenv().admin
+local prefix = getgenv().prefix
+local crasher = getgenv().crasher
 
-local adverbmsg = Getgenv().adverbmsg
+local adverbmsg = getgenv().adverbmsg
 
-local alts = Getgenv().alts
+local alts = getgenv().alts
 
 
 
