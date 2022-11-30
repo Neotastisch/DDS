@@ -10,7 +10,7 @@ local alts = getgenv().alts
 
 --End of config
 
-local adminpositions = {(-870,-38,-550),(-870,-38,-570),(-870,-38,-590),(-870,-38,-610)}
+local adminpositions = {{-870,-38,-550},{-870,-38,-570},{-870,-38,-590},{-870,-38,-610}}
 
 --local adminpositionspremium = {(-870,-38,-550),(-870,-38,-570),(-870,-38,-590),(-870,-38,-610),(-900,-38,-550),(-900,-38,-570),(-900,-38,-590),(-900,-38,-610)}
 
@@ -35,6 +35,10 @@ main.Active = true
 end
 
 local withlimit = false
+
+local airlock = false
+local airlockpos = {}
+
 local cashdropped = 0
 local stopcash = 0
 
@@ -57,13 +61,16 @@ local function onChatted(p,msg)
             game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Start","All")
         end
         if msg == prefix.."advert" then
-            adverb = !adverb
+            adverb = not adverb
         end
         if msg == prefix.."stop" then
             dropping = false
             game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("End","All")
             cashdropped = 0
             print("Stopped")
+        end
+         if msg == prefix.."dropped" then
+            game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(cashdropped,"All")
         end
         if msg == prefix.."crash" then
             if player.name == crash then
@@ -89,11 +96,21 @@ local function onChatted(p,msg)
             print("Moving to admin.")
             local targetPlayer = Players:FindFirstChild(admin)
             Players.LocalPlayer.Character:MoveTo(targetPlayer.Character.HumanoidRootPart.Position)
+            player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
+        end
+          if msg == prefix.."airlock" then
+            airlock = true
+            airlockpos = {Players.LocalPlayer.Character.HumanoidRootPart.Position.X,Players.LocalPlayer.Character.HumanoidRootPart.Position.Y,Players.LocalPlayer.Character.HumanoidRootPart.Position.Z}
+        end
+        if msg:match(prefix.."tpto") then
+            local targetPlayer = Players:FindFirstChild(string.split(msg," ")[2])
+            Players.LocalPlayer.Character:MoveTo(targetPlayer.Character.HumanoidRootPart.Position)
+            player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
         end
         if msg:match(prefix.."setup") then
             for i, v in ipairs(alts) do
-                if v.name == player.name then
-                    player.Character.HumanoidRootPart.CFrame = CFrame.new(adminpositions[i])
+                if v == player.name then
+                    player.Character.HumanoidRootPart.CFrame = CFrame.new(adminpositions[i][1],adminpositions[i][2],adminpositions[i][3])
                     player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
                 end
             end
@@ -133,6 +150,11 @@ end
 while wait() do
     if adverb == true then
         game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(adverbmsg,"All")
-        wait(7)
+        wait(9.5)
+    end
+end
+while wait() do
+    if airlock == true then
+        player.Character.HumanoidRootPart.CFrame = CFrame.new(airlockpos[1],airlockpos[2],airlockpos[3])
     end
 end
