@@ -44,8 +44,8 @@ local function onChatted(p,msg)
         end
      return
     end
-     
-    if p==admin then
+    print(p.name)
+    if p.name==admin then
 
         if msg == prefix.."drop" then
             dropping = true
