@@ -36,9 +36,6 @@ end
 
 local withlimit = false
 
-local airlock = false
-local airlockpos = {}
-
 local cashdropped = 0
 local stopcash = 0
 
@@ -98,14 +95,20 @@ local function onChatted(p,msg)
             Players.LocalPlayer.Character:MoveTo(targetPlayer.Character.HumanoidRootPart.Position)
             player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
         end
-          if msg == prefix.."airlock" then
-            airlock = true
-            airlockpos = {Players.LocalPlayer.Character.HumanoidRootPart.Position.X,Players.LocalPlayer.Character.HumanoidRootPart.Position.Y,Players.LocalPlayer.Character.HumanoidRootPart.Position.Z}
-        end
         if msg:match(prefix.."tpto") then
             local targetPlayer = Players:FindFirstChild(string.split(msg," ")[2])
             Players.LocalPlayer.Character:MoveTo(targetPlayer.Character.HumanoidRootPart.Position)
             player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
+        end
+         if msg:match(prefix.."bring") then
+            local targetPlayer = Players:FindFirstChild(string.split(msg," ")[2])
+            Players.LocalPlayer.Character:MoveTo(targetPlayer.Character.HumanoidRootPart.Position)
+            player.Character.HumanoidRootPart.lookAt(targetPlayer.Character.HumanoidRootPart)
+            if Plr.Backpack:FindFirstChild("Combat") and Plr.Character:FindFirstChild("Combat") == nil then
+                        local tool = Plr.Backpack:FindFirstChild("Combat")
+                        Plr.Character.Humanoid:EquipTool(tool)
+                        Plr.Character.Humanoid:Activate(tool)
+             end
         end
         if msg:match(prefix.."setup") then
             for i, v in ipairs(alts) do
@@ -151,10 +154,5 @@ while wait() do
     if adverb == true then
         game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(adverbmsg,"All")
         wait(9.5)
-    end
-end
-while wait() do
-    if airlock == true then
-        player.Character.HumanoidRootPart.CFrame = CFrame.new(airlockpos[1],airlockpos[2],airlockpos[3])
     end
 end
