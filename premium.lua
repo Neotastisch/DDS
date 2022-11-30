@@ -7,9 +7,6 @@ local adverbmsg = getgenv().adverbmsg
 local alts = getgenv().alts
 
 
-
---End of config
-
 local adminpositions = {{-870,-38,-550},{-870,-38,-570},{-870,-38,-590},{-870,-38,-610}}
 
 --local adminpositionspremium = {(-870,-38,-550),(-870,-38,-570),(-870,-38,-590),(-870,-38,-610),(-900,-38,-550),(-900,-38,-570),(-900,-38,-590),(-900,-38,-610)}
@@ -23,15 +20,7 @@ local Plr = game:GetService("Players").LocalPlayer
 _G.dropper = instance
 
 if table.find(alts, player.name) then
-local ScreenGui = Instance.new("ScreenGui")
-local main = Instance.new("Frame")
-ScreenGui.Parent = game.CoreGui
-main.Name = "main"
-main.Parent = ScreenGui
-main.BackgroundColor3=Color3.fromRGB(53, 53, 53)
-main.Position=UDim2.new(0, -100, 0, -100)
-main.Size = UDim2.new (0, 10000, 0, 10000)
-main.Active = true
+game:GetService("RunService"):Set3dRenderingEnabled(false)
 end
 
 local withlimit = false
@@ -43,6 +32,10 @@ local stopcash = 0
 --loadstring(game:HttpGet(("https://raw.githubusercontent.com/Raycodex/Exploiting/main/Roblox/Da%20Hood%20Auto%20Cash%20Drop"), true))()
 
 local function onChatted(p,msg)
+    if p.name == admin then
+       return 
+    end
+    
     if p.name==admin then
         print(msg)
         if msg == prefix.."drop" then
@@ -92,17 +85,17 @@ local function onChatted(p,msg)
         if msg == prefix.."host" then
             print("Moving to admin.")
             local targetPlayer = Players:FindFirstChild(admin)
-            Players.LocalPlayer.Character:MoveTo(targetPlayer.Character.HumanoidRootPart.Position)
+            Players.LocalPlayer.Character.HumanoidRootPart.CFrame = targetPlayer.Character.HumanoidRootPart.CFrame
             player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
         end
         if msg:match(prefix.."tpto") then
             local targetPlayer = Players:FindFirstChild(string.split(msg," ")[2])
-            Players.LocalPlayer.Character:MoveTo(targetPlayer.Character.HumanoidRootPart.Position)
+            Players.LocalPlayer.Character.HumanoidRootPart.CFrame = targetPlayer.Character.HumanoidRootPart.CFrame
             player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
         end
          if msg:match(prefix.."bring") then
             local targetPlayer = Players:FindFirstChild(string.split(msg," ")[2])
-            Players.LocalPlayer.Character:MoveTo(targetPlayer.Character.HumanoidRootPart.Position)
+            Players.LocalPlayer.Character.HumanoidRootPart.CFrame = targetPlayer.Character.HumanoidRootPart.CFrame
             player.Character.HumanoidRootPart.lookAt(targetPlayer.Character.HumanoidRootPart.Position)
             if Plr.Backpack:FindFirstChild("Combat") and Plr.Character:FindFirstChild("Combat") == nil then
                         local tool = Plr.Backpack:FindFirstChild("Combat")
