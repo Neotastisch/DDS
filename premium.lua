@@ -69,7 +69,7 @@ local function onChatted(p,msg)
      return
     end
      
-    if p.name==admin then
+    if p==admin then
 
         if msg == prefix.."drop" then
             withlimit = false
