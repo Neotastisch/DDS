@@ -18,8 +18,6 @@ local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 local Plr = game:GetService("Players").LocalPlayer
 _G.dropper = instance
-local StarterGui = game:GetService("StarterGui")
-StarterGui:SetCore("ChatMakeSystemMessage",privateProperties)
 
 local chatFrame = player.PlayerGui.Chat.Frame
 chatFrame.ChatChannelParentFrame.Visible = true
@@ -129,6 +127,10 @@ end
 
 Players.PlayerAdded:Connect(function(p)
     p.Chatted:Connect(function(msg) onChatted(p,msg) end)
+end)
+
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.OnMessageDoneFiltering.OnClientEvent:Connect(function(D)
+	print(D)
 end)
 
 while wait() do
