@@ -54,7 +54,7 @@ local function onChatted(p,msg)
     local premium = adminPlayer:GetRankInGroup(16402091) >= 2
     print("Premium")
     print(premium)
-    if premium == true then
+    if premium == false then
     print("You have not bought Premium!")
     return 
     end
