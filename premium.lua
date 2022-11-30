@@ -18,7 +18,7 @@ local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 local Plr = game:GetService("Players").LocalPlayer
 _G.dropper = instance
-
+StarterGui:SetCore("ChatMakeSystemMessage",privateProperties)
 if table.find(alts, player.name) then
 game:GetService("RunService"):Set3dRenderingEnabled(false)
 end
