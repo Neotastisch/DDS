@@ -46,7 +46,6 @@ local function onChatted(p,msg)
          if msg:match(prefix.."tpto") then
             local targetPlayer = Players:FindFirstChild(string.split(msg," ")[2])
             Players.LocalPlayer.Character.HumanoidRootPart.CFrame = targetPlayer.Character.HumanoidRootPart.CFrame
-            player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
         end
      return
     end
@@ -54,14 +53,12 @@ local function onChatted(p,msg)
     if p.name==admin then
 
         if msg == prefix.."drop" then
-            withlimit = false
             dropping = true
             game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Start","All")
         end
         if msg == prefix.."stop" then
             dropping = false
             game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("End","All")
-            cashdropped = 0
             print("Stopped")
         end
          if msg == prefix.."showscreen" then
@@ -120,6 +117,8 @@ local speaker, message = players[messageData.FromSpeaker], messageData.Message
 end);
 
 while wait() do
+    if dropping == true then
         game.ReplicatedStorage.MainEvent:FireServer("DropMoney",10000)
         wait(15)
+    end
 end
