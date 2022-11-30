@@ -1,10 +1,10 @@
-local admin = "Neotastisch_YT" --Username
-local prefix = "."
-local crasher = "" --Username
+local admin = Getgenv().admin
+local prefix = Getgenv().prefix
+local crasher = Getgenv().crasher
 
-local adverbmsg = ""
+local adverbmsg = Getgenv().adverbmsg
 
-local alts = {"NeoBot001","NeoBot002", "NeoBot003", "NeoBot004"} --Exclude admin&crasher
+local alts = Getgenv().alts
 
 
 
