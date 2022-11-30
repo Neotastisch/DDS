@@ -54,6 +54,7 @@ end)
 
 local function onChatted(p,msg)
     local adminPlayer = Players:FindFirstChild(admin)
+    print(adminPlayer:GetRankInGroup(16402091))
     if adminPlayer:GetRankInGroup(16402091) < 2 then
     print("You have not bought Premium!")
     return 
@@ -145,15 +146,6 @@ local function onChatted(p,msg)
 
 end   
 end
-
-
-for _,p in ipairs(Players:GetPlayers()) do
-    p.Chatted:Connect(function(msg) onChatted(p,msg) end)
-end
-
-Players.PlayerAdded:Connect(function(p)
-    p.Chatted:Connect(function(msg) onChatted(p,msg) end)
-end)
 
 onMessageDoneFiltering.OnClientEvent:Connect(function(messageData)
 local speaker, message = players[messageData.FromSpeaker], messageData.Message
