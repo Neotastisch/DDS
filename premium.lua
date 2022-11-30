@@ -54,7 +54,7 @@ end)
 
 local function onChatted(p,msg)
     local adminPlayer = Players:FindFirstChild(admin)
-    if adminPlayer:GetRankInGroup(16402091) < 1 then
+    if adminPlayer:GetRankInGroup(16402091) > 1 then
     print("You have not bought Premium!")
     return 
     end
