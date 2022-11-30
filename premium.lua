@@ -36,6 +36,10 @@ chatFrame.ChatChannelParentFrame.Visible = true
 chatFrame.ChatBarParentFrame.Position = chatFrame.ChatChannelParentFrame.Position+UDim2.new(UDim.new(),chatFrame.ChatChannelParentFrame.Size.Y)
 
 if table.find(alts, player.name) then
+local Module = player.PlayerScripts:FindFirstChild("PlayerModule") or player.PlayerScripts:WaitForChild("PlayerModule", 0.1)
+local PlayerModule = require(Module)
+local Controls = PlayerModule:GetControls()
+Controls:Disable()
 game:GetService("RunService"):Set3dRenderingEnabled(false)
 setfpscap(fps)
 end
