@@ -45,12 +45,6 @@ local withlimit = false
 local cashdropped = 0
 local stopcash = 0
 
-local vu = game:GetService("VirtualUser")
-game:GetService("Players").LocalPlayer.Idled:connect(function()
-vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-wait(1)
-vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-end)
 
 local function onChatted(p,msg)
     local adminPlayer = Players:FindFirstChild(admin)
@@ -69,7 +63,7 @@ local function onChatted(p,msg)
      return
     end
      
-    if p==admin then
+    if p.name==admin then
 
         if msg == prefix.."drop" then
             withlimit = false
