@@ -42,7 +42,7 @@ Controls:Disable()
 game:GetService("RunService"):Set3dRenderingEnabled(false)
 setfpscap(fps)
 end
-
+print("Loaded DDS")
 local withlimit = false
 
 local cashdropped = 0
