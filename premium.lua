@@ -20,6 +20,11 @@ if not game:IsLoaded() then
     game.Loaded:Wait();
 end
 
+game.StarterGui:SetCore("SendNotification", {
+        Title = "DDS";
+        Text = "DDS has loaded!";
+        Duration = 10;
+    })
 
 local adverb = false
 
