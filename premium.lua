@@ -105,6 +105,7 @@ function BringPlr(Target,POS)
 			Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,3)
 			repeat wait(0)
 			while enablehitting == true do
+			wait()
 			c.Combat:Activate()
 			end
 			wait(0.5)
