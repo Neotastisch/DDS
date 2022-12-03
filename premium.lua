@@ -63,7 +63,7 @@ local stopcash = 0
 
 
 local function onChatted(p,msg)
-    local Args = string.split(Message," ")
+    local Args = string.split(msg," ")
     local adminPlayer = Players:FindFirstChild(admin)
     local premium = adminPlayer:GetRankInGroup(16402091) >= 2
     if premium == false then
