@@ -98,14 +98,6 @@ end
 end
 
 
-for _,p in ipairs(Players:GetPlayers()) do
-    p.Chatted:Connect(function(msg) onChatted(p,msg) end)
-end
-
-Players.PlayerAdded:Connect(function(p)
-    p.Chatted:Connect(function(msg) onChatted(p,msg) end)
-end)
-
 onMessageDoneFiltering.OnClientEvent:Connect(function(messageData)
 local speaker, message = players[messageData.FromSpeaker], messageData.Message
     onChatted(speaker,message)
