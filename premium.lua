@@ -35,6 +35,7 @@ chatFrame.ChatChannelParentFrame.Visible = true
 chatFrame.ChatBarParentFrame.Position = chatFrame.ChatChannelParentFrame.Position+UDim2.new(UDim.new(),chatFrame.ChatChannelParentFrame.Size.Y)
 
 if table.find(alts, player.name) then
+game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("[DDS] Loaded","All")
 local Module = player.PlayerScripts:FindFirstChild("PlayerModule") or player.PlayerScripts:WaitForChild("PlayerModule", 0.1)
 local PlayerModule = require(Module)
 local Controls = PlayerModule:GetControls()
@@ -52,8 +53,6 @@ local stopcash = 0
 local function onChatted(p,msg)
     local adminPlayer = Players:FindFirstChild(admin)
     local premium = adminPlayer:GetRankInGroup(16402091) >= 2
-    print("Premium")
-    print(premium)
     if premium == false then
     print("You have not bought Premium!")
     return 
@@ -74,6 +73,10 @@ local function onChatted(p,msg)
             withlimit = false
             dropping = true
             game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Start","All")
+        end
+        if msg:match(prefix.."fps") then
+           setfpscap(tonumber(string.split(msg," ")[2]))
+           game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("FPS set to "..string.split(msg," ")[2],"All")
         end
         if msg:match(prefix.."cdrop") then
             stopcash = string.gsub(string.split(msg," ")[2], "mil", "000000")
@@ -123,6 +126,7 @@ local function onChatted(p,msg)
         if msg == prefix.."airlock" then
            local position = Players.LocalPlayer.Character.HumanoidRootPart.Position
            Players.LocalPlayer.Character.HumanoidRootPart.Position = Vector3.new(position.x,position.y+8,position.z)
+           player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
            Players.LocalPlayer.Character:findFirstChild("Torso").Anchored = true
         end
         if msg == prefix.."unlock" then
@@ -183,12 +187,15 @@ while wait() do
 end
 end
 end
-while wait() do
+
+
+while true do
     if adverb == true then
         print("Adverb enabled")
         game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(adverbmsg,"All")
         wait(9.5)
     end
+    wait(1)
 end
 
 
