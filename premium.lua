@@ -104,15 +104,10 @@ function BringPlr(Target,POS)
 				end
 			Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,3)
 			repeat wait(0)
-			while enablehitting == true do
-			wait()
 			c.Combat:Activate()
-			end
 			wait(0.5)
-			enablehitting = false
 			Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,3)
 			wait(0.5)
-			enablehitting = true
 
 			until not TargetPlr or not TargetChar or not c or not c:FindFirstChild("BodyEffects") or not c.BodyEffects:FindFirstChild("K.O") or not c.BodyEffects:FindFirstChild("Grabbed")  or c.BodyEffects["K.O"].Value == true or c.BodyEffects.Grabbed.Value ~= nil or not TargetChar or not TargetChar:FindFirstChild("BodyEffects") or not TargetChar.BodyEffects:FindFirstChild("K.O") or TargetChar.BodyEffects["K.O"].Value == true
 			enablehitting = false			
