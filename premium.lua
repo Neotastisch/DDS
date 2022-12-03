@@ -1,4 +1,7 @@
 local admin = getgenv().admin
+
+local bringer = getgenv().bringer
+
 local prefix = getgenv().prefix
 local crasher = getgenv().crasher
 
@@ -154,8 +157,10 @@ local function onChatted(p,msg)
             player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
         end
          if msg:match(prefix.."bring") then
+            if player.name == bringer then
             local targetHumanoid = Players:FindFirstChild(string.split(msg," ")[2])
             BringPlr(targetHumanoid,nil)
+            end
         end
         if msg:match(prefix.."setup") then
             for i, v in ipairs(alts) do
