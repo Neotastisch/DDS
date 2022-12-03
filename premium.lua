@@ -64,7 +64,6 @@ local function onChatted(p,msg)
          if msg:match(prefix.."tpto") then
             local targetPlayer = Players:FindFirstChild(string.split(msg," ")[2])
             Players.LocalPlayer.Character.HumanoidRootPart.CFrame = targetPlayer.Character.HumanoidRootPart.CFrame
-            player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
         end
      return
     end
@@ -121,7 +120,7 @@ local function onChatted(p,msg)
         end
         if msg == prefix.."airlock" then
            local position = Players.LocalPlayer.Character.HumanoidRootPart.Position
-           Players.LocalPlayer.Character.HumanoidRootPart.Position = position.x,position.y+10,position.z
+           Players.LocalPlayer.Character.HumanoidRootPart.Position = Vector3.new(position.x,position.y+10,position.z)
            Players.LocalPlayer.Character:findFirstChild("Torso").Anchored = true
         end
          if msg == prefix.."unlock" then
