@@ -124,16 +124,17 @@ local function onChatted(p,msg)
             end
         end
         if msg == prefix.."airlock" then
-           local position = Players.LocalPlayer.Character.HumanoidRootPart.Position
-           Players.LocalPlayer.Character.HumanoidRootPart.Position = Vector3.new(position.x,position.y+8,position.z)
-           player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
-           Players.LocalPlayer.Character:findFirstChild("Torso").Anchored = true
+           game.Players.LocalPlayer.Character.Head.Anchored = false
+           local humanoid = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+           humanoid.Jump = true
+           wait(0.3)
+           game.Players.LocalPlayer.Character.Head.Anchored = true
         end
         if msg == prefix.."unlock" then
-           Players.LocalPlayer.Character:findFirstChild("Torso").Anchored = false
+           game.Players.LocalPlayer.Character.Head.Anchored = false
         end
         if msg == prefix.."lock" then
-           Players.LocalPlayer.Character:findFirstChild("Torso").Anchored = true
+           game.Players.LocalPlayer.Character.Head.Anchored = true
         end
         if msg == prefix.."host" then
             print("Moving to admin.")
@@ -142,13 +143,17 @@ local function onChatted(p,msg)
             player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
         end
          if msg:match(prefix.."bring") then
-            local targetPlayer = Players:FindFirstChild(string.split(msg," ")[2])
-            Players.LocalPlayer.Character.HumanoidRootPart.CFrame = targetPlayer.Character.HumanoidRootPart.CFrame
-            player.Character.HumanoidRootPart.lookAt(targetPlayer.Character.HumanoidRootPart.Position)
-            if Plr.Backpack:FindFirstChild("Combat") and Plr.Character:FindFirstChild("Combat") == nil then
-                        local tool = Plr.Backpack:FindFirstChild("Combat")
-                        Plr.Character.Humanoid:EquipTool(tool)
-             end
+            local PlayerHumanoid = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+            
+            local targetHumanoid = Players:FindFirstChild(string.split(msg," ")[2]).Character:WaitForChild("Humanoid")
+            local LastTargetPosition = targetHumanoid.RootPart.CFrame
+
+            
+            PlayerHumanoid.RootPart.CFrame = LastTargetPosition + LastTargetPosition.LookVector * Length
+            PlayerHumanoid.RootPart.CFrame =
+                 CFrame.new(PlayerHumanoid.RootPart.CFrame.Position, Vector3.new(
+                     LastTargetPosition.Position.X, PlayerHumanoid.RootPart.CFrame.Position.Y,
+                     LastTargetPosition.Position.Z))
         end
         if msg:match(prefix.."setup") then
             for i, v in ipairs(alts) do
