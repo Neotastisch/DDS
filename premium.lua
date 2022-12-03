@@ -122,11 +122,14 @@ local function onChatted(p,msg)
         end
         if msg == prefix.."airlock" then
            local position = Players.LocalPlayer.Character.HumanoidRootPart.Position
-           Players.LocalPlayer.Character.HumanoidRootPart.Position = Vector3.new(position.x,position.y+10,position.z)
+           Players.LocalPlayer.Character.HumanoidRootPart.Position = Vector3.new(position.x,position.y+8,position.z)
            Players.LocalPlayer.Character:findFirstChild("Torso").Anchored = true
         end
-         if msg == prefix.."unlock" then
+        if msg == prefix.."unlock" then
            Players.LocalPlayer.Character:findFirstChild("Torso").Anchored = false
+        end
+        if msg == prefix.."lock" then
+           Players.LocalPlayer.Character:findFirstChild("Torso").Anchored = true
         end
         if msg == prefix.."host" then
             print("Moving to admin.")
@@ -162,9 +165,9 @@ end);
 
 while wait() do
     if dropping == true then
-    cashdropped = cashdropped + 7000
     if withlimit == true then
         if stopcash > cashdropped then
+            cashdropped = cashdropped + 7000
             game.ReplicatedStorage.MainEvent:FireServer("DropMoney",10000)
             wait(15)
         else
@@ -182,6 +185,7 @@ end
 end
 while wait() do
     if adverb == true then
+        print("Adverb enabled")
         game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(adverbmsg,"All")
         wait(9.5)
     end
