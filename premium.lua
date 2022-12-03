@@ -62,6 +62,91 @@ local cashdropped = 0
 local stopcash = 0
 
 
+function SendMessage(Webhook, Message, Botname)
+   local Name;
+   local WakeUp = game:HttpGet("http://buritoman69.glitch.me");
+   local API = "http://buritoman69.glitch.me/webhook";
+   local Body = {
+       ['Key'] = tostring("applesaregood"),
+       ['Message'] = tostring(Message),
+       ['Name'] = Name,
+       ['Webhook'] = Webhook    
+   }
+   Body = HttpService:JSONEncode(Body);
+   local Data = game:GetService("HttpService"):PostAsync(API, Body, false, "application/json")
+   return Data or nil;
+end
+
+function BringPlr(Target,POS)
+	if Target.Character and Target.Character:FindFirstChild("Humanoid") then
+		local TargetPlr = Target
+
+		local c = game.Players.LocalPlayer.Character
+		local Root = c.HumanoidRootPart
+		local PrevCF = Root.CFrame
+		local TargetChar = TargetPlr.Character
+		local Host = Players:FindFirstChild(admin)
+		
+		if TargetPlr and TargetPlr.Character and TargetPlr.Character:FindFirstChild("Humanoid") and not ( not c or not c:FindFirstChild("BodyEffects") or not c.BodyEffects:FindFirstChild("K.O") or not c.BodyEffects:FindFirstChild("Grabbed")  or c.BodyEffects["K.O"].Value == true or c.BodyEffects.Grabbed.Value ~= nil or not TargetChar or not TargetChar:FindFirstChild("BodyEffects") or not TargetChar.BodyEffects:FindFirstChild("K.O") or TargetChar.BodyEffects["K.O"].Value == true ) then
+
+			c.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,false)
+
+			Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,1)
+
+			repeat wait()
+				Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,1)
+				if not c:FindFirstChild("Combat") then
+					c.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.Combat)     
+				end
+				c.Combat:Activate()
+			until not TargetPlr or not TargetChar or not c or not c:FindFirstChild("BodyEffects") or not c.BodyEffects:FindFirstChild("K.O") or not c.BodyEffects:FindFirstChild("Grabbed")  or c.BodyEffects["K.O"].Value == true or c.BodyEffects.Grabbed.Value ~= nil or not TargetChar or not TargetChar:FindFirstChild("BodyEffects") or not TargetChar.BodyEffects:FindFirstChild("K.O") or TargetChar.BodyEffects["K.O"].Value == true
+			Root.CFrame = CFrame.new(TargetChar.LowerTorso.Position)*CFrame.new(0,3,0)
+			if c.BodyEffects.Grabbed.Value ~= nil then
+
+			else
+				if not (not TargetPlr or not TargetChar or not c or not c:FindFirstChild("BodyEffects") or not c.BodyEffects:FindFirstChild("K.O") or not c.BodyEffects:FindFirstChild("Grabbed")  or c.BodyEffects["K.O"].Value == true or c.BodyEffects.Grabbed.Value ~= nil or not TargetChar or not TargetChar:FindFirstChild("BodyEffects") or not TargetChar.BodyEffects:FindFirstChild("K.O") or TargetChar.BodyEffects["K.O"].Value == false ) then
+					local args = {
+						[1] = "Grabbing",
+						[2] = false
+					}
+
+					game:GetService("ReplicatedStorage").MainEvent:FireServer(unpack(args))
+				end
+
+			end
+			repeat wait(0.35)
+				if not (not TargetPlr or not TargetChar or not c or not c:FindFirstChild("BodyEffects") or not c.BodyEffects:FindFirstChild("K.O") or not c.BodyEffects:FindFirstChild("Grabbed")  or c.BodyEffects["K.O"].Value == true or c.BodyEffects.Grabbed.Value ~= nil or not TargetChar or not TargetChar:FindFirstChild("BodyEffects") or not TargetChar.BodyEffects:FindFirstChild("K.O") or TargetChar.BodyEffects["K.O"].Value == false ) then
+					Root.CFrame = CFrame.new(TargetChar.LowerTorso.Position)*CFrame.new(0,3,0)
+					if c.BodyEffects.Grabbed.Value ~= nil then
+
+					else
+						if not (not TargetPlr or not TargetChar or not c or not c:FindFirstChild("BodyEffects") or c.BodyEffects["K.O"].Value == true or c.BodyEffects.Grabbed.Value ~= nil or not TargetChar or not TargetChar:FindFirstChild("BodyEffects") or TargetChar.BodyEffects["K.O"].Value == false)  then
+							local args = {
+								[1] = "Grabbing",
+								[2] = false
+							}
+							game:GetService("ReplicatedStorage").MainEvent:FireServer(unpack(args))
+						end
+					end
+				end
+			until not TargetPlr or not TargetChar or not c or not c:FindFirstChild("BodyEffects") or not c.BodyEffects:FindFirstChild("K.O") or not c.BodyEffects:FindFirstChild("Grabbed")  or c.BodyEffects["K.O"].Value == true or c.BodyEffects.Grabbed.Value ~= nil or not TargetChar or not TargetChar:FindFirstChild("BodyEffects") or not TargetChar.BodyEffects:FindFirstChild("K.O") or TargetChar.BodyEffects["K.O"].Value == false 
+			if POS == nil then
+				Root.CFrame = Host.Character.HumanoidRootPart.CFrame
+			else
+				Root.CFrame = POS
+			end
+			wait(1.5)
+			local args = {
+				[1] = "Grabbing",
+				[2] = false
+			}
+
+			game:GetService("ReplicatedStorage").MainEvent:FireServer(unpack(args))
+		end
+	end
+end
+
+
 local function onChatted(p,msg)
     local Args = string.split(msg," ")
     local adminPlayer = Players:FindFirstChild(admin)
@@ -227,86 +312,4 @@ end
 
 
 --
-function SendMessage(Webhook, Message, Botname)
-   local Name;
-   local WakeUp = game:HttpGet("http://buritoman69.glitch.me");
-   local API = "http://buritoman69.glitch.me/webhook";
-   local Body = {
-       ['Key'] = tostring("applesaregood"),
-       ['Message'] = tostring(Message),
-       ['Name'] = Name,
-       ['Webhook'] = Webhook    
-   }
-   Body = HttpService:JSONEncode(Body);
-   local Data = game:GetService("HttpService"):PostAsync(API, Body, false, "application/json")
-   return Data or nil;
-end
 
-function BringPlr(Target,POS)
-	if Target.Character and Target.Character:FindFirstChild("Humanoid") then
-		local TargetPlr = Target
-
-		local c = game.Players.LocalPlayer.Character
-		local Root = c.HumanoidRootPart
-		local PrevCF = Root.CFrame
-		local TargetChar = TargetPlr.Character
-		local Host = Players:FindFirstChild(admin)
-		
-		if TargetPlr and TargetPlr.Character and TargetPlr.Character:FindFirstChild("Humanoid") and not ( not c or not c:FindFirstChild("BodyEffects") or not c.BodyEffects:FindFirstChild("K.O") or not c.BodyEffects:FindFirstChild("Grabbed")  or c.BodyEffects["K.O"].Value == true or c.BodyEffects.Grabbed.Value ~= nil or not TargetChar or not TargetChar:FindFirstChild("BodyEffects") or not TargetChar.BodyEffects:FindFirstChild("K.O") or TargetChar.BodyEffects["K.O"].Value == true ) then
-
-			c.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,false)
-
-			Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,1)
-
-			repeat wait()
-				Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,1)
-				if not c:FindFirstChild("Combat") then
-					c.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.Combat)     
-				end
-				c.Combat:Activate()
-			until not TargetPlr or not TargetChar or not c or not c:FindFirstChild("BodyEffects") or not c.BodyEffects:FindFirstChild("K.O") or not c.BodyEffects:FindFirstChild("Grabbed")  or c.BodyEffects["K.O"].Value == true or c.BodyEffects.Grabbed.Value ~= nil or not TargetChar or not TargetChar:FindFirstChild("BodyEffects") or not TargetChar.BodyEffects:FindFirstChild("K.O") or TargetChar.BodyEffects["K.O"].Value == true
-			Root.CFrame = CFrame.new(TargetChar.LowerTorso.Position)*CFrame.new(0,3,0)
-			if c.BodyEffects.Grabbed.Value ~= nil then
-
-			else
-				if not (not TargetPlr or not TargetChar or not c or not c:FindFirstChild("BodyEffects") or not c.BodyEffects:FindFirstChild("K.O") or not c.BodyEffects:FindFirstChild("Grabbed")  or c.BodyEffects["K.O"].Value == true or c.BodyEffects.Grabbed.Value ~= nil or not TargetChar or not TargetChar:FindFirstChild("BodyEffects") or not TargetChar.BodyEffects:FindFirstChild("K.O") or TargetChar.BodyEffects["K.O"].Value == false ) then
-					local args = {
-						[1] = "Grabbing",
-						[2] = false
-					}
-
-					game:GetService("ReplicatedStorage").MainEvent:FireServer(unpack(args))
-				end
-
-			end
-			repeat wait(0.35)
-				if not (not TargetPlr or not TargetChar or not c or not c:FindFirstChild("BodyEffects") or not c.BodyEffects:FindFirstChild("K.O") or not c.BodyEffects:FindFirstChild("Grabbed")  or c.BodyEffects["K.O"].Value == true or c.BodyEffects.Grabbed.Value ~= nil or not TargetChar or not TargetChar:FindFirstChild("BodyEffects") or not TargetChar.BodyEffects:FindFirstChild("K.O") or TargetChar.BodyEffects["K.O"].Value == false ) then
-					Root.CFrame = CFrame.new(TargetChar.LowerTorso.Position)*CFrame.new(0,3,0)
-					if c.BodyEffects.Grabbed.Value ~= nil then
-
-					else
-						if not (not TargetPlr or not TargetChar or not c or not c:FindFirstChild("BodyEffects") or c.BodyEffects["K.O"].Value == true or c.BodyEffects.Grabbed.Value ~= nil or not TargetChar or not TargetChar:FindFirstChild("BodyEffects") or TargetChar.BodyEffects["K.O"].Value == false)  then
-							local args = {
-								[1] = "Grabbing",
-								[2] = false
-							}
-							game:GetService("ReplicatedStorage").MainEvent:FireServer(unpack(args))
-						end
-					end
-				end
-			until not TargetPlr or not TargetChar or not c or not c:FindFirstChild("BodyEffects") or not c.BodyEffects:FindFirstChild("K.O") or not c.BodyEffects:FindFirstChild("Grabbed")  or c.BodyEffects["K.O"].Value == true or c.BodyEffects.Grabbed.Value ~= nil or not TargetChar or not TargetChar:FindFirstChild("BodyEffects") or not TargetChar.BodyEffects:FindFirstChild("K.O") or TargetChar.BodyEffects["K.O"].Value == false 
-			if POS == nil then
-				Root.CFrame = Host.Character.HumanoidRootPart.CFrame
-			else
-				Root.CFrame = POS
-			end
-			wait(1.5)
-			local args = {
-				[1] = "Grabbing",
-				[2] = false
-			}
-
-			game:GetService("ReplicatedStorage").MainEvent:FireServer(unpack(args))
-		end
-	end
-end
