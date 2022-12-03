@@ -92,10 +92,9 @@ function BringPlr(Target,POS)
 
 			c.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,false)
 
-			Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,1)
+			Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,2)
 
 			repeat wait()
-				Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,10)
 				if not c:FindFirstChild("Combat") then
 					c.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.Combat)     
 				end
