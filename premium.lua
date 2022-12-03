@@ -57,7 +57,7 @@ setfpscap(fps)
 end
 print("Loaded DDS")
 local withlimit = false
-
+local CmdSettings = {}
 local cashdropped = 0
 local stopcash = 0
 
@@ -79,15 +79,16 @@ end
 
 function BringPlr(Target,POS)
 	if Target.Character and Target.Character:FindFirstChild("Humanoid") then
+		CmdSettings["Aura"] = nil
+
 		local TargetPlr = Target
 
 		local c = game.Players.LocalPlayer.Character
 		local Root = c.HumanoidRootPart
 		local PrevCF = Root.CFrame
 		local TargetChar = TargetPlr.Character
-		local Host = Players:FindFirstChild(admin)
-		
 		if TargetPlr and TargetPlr.Character and TargetPlr.Character:FindFirstChild("Humanoid") and not ( not c or not c:FindFirstChild("BodyEffects") or not c.BodyEffects:FindFirstChild("K.O") or not c.BodyEffects:FindFirstChild("Grabbed")  or c.BodyEffects["K.O"].Value == true or c.BodyEffects.Grabbed.Value ~= nil or not TargetChar or not TargetChar:FindFirstChild("BodyEffects") or not TargetChar.BodyEffects:FindFirstChild("K.O") or TargetChar.BodyEffects["K.O"].Value == true ) then
+			CmdSettings["IsLocking"] = true
 
 			c.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,false)
 
@@ -135,6 +136,7 @@ function BringPlr(Target,POS)
 			else
 				Root.CFrame = POS
 			end
+			CmdSettings["IsLocking"] = nil
 			wait(1.5)
 			local args = {
 				[1] = "Grabbing",
@@ -145,7 +147,6 @@ function BringPlr(Target,POS)
 		end
 	end
 end
-
 
 local function onChatted(p,msg)
     local Args = string.split(msg," ")
