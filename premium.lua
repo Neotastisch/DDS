@@ -161,7 +161,7 @@ local function onChatted(p,msg)
          if Args[1] == prefix.."bring" then
             if player.name == bringer then
 	    print("ok"..Args[2])
-            local targetHumanoid = GetPlayerFromString(Args[2])
+            local targetHumanoid = Players:FindFirstChild(string.split(msg," ")[2])
 	    if targetHumanoid then		
 	    	print(targetHumanoid)
             	BringPlr(targetHumanoid,nil)
@@ -244,20 +244,6 @@ function SendMessage(Webhook, Message, Botname)
    Body = HttpService:JSONEncode(Body);
    local Data = game:GetService("HttpService"):PostAsync(API, Body, false, "application/json")
    return Data or nil;
-end
-
-function GetPlayerFromString(str,ignore)
-	for i,Targ in pairs(Players) do 
-		if not ignore and Targ == Players then
-			continue
-		end
-		if Targ.Name:lower():sub(1,#str) == str:lower() or  Targ.DisplayName:lower():sub(1,#str) == str:lower()  then
-			print("found")
-			return Targ
-		end
-	end
-	print("nil :(")
-	return nil
 end
 
 function BringPlr(Target,POS)
