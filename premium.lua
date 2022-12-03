@@ -79,6 +79,9 @@ end
 
 function BringPlr(Target,POS)
 	if Target.Character and Target.Character:FindFirstChild("Humanoid") then
+		
+		
+		
 		CmdSettings["Aura"] = nil
 
 		local TargetPlr = Target
@@ -87,6 +90,9 @@ function BringPlr(Target,POS)
 		local Root = c.HumanoidRootPart
 		local PrevCF = Root.CFrame
 		local TargetChar = TargetPlr.Character
+		
+		local currentPos = Root.CFrame
+		
 		if TargetPlr and TargetPlr.Character and TargetPlr.Character:FindFirstChild("Humanoid") and not ( not c or not c:FindFirstChild("BodyEffects") or not c.BodyEffects:FindFirstChild("K.O") or not c.BodyEffects:FindFirstChild("Grabbed")  or c.BodyEffects["K.O"].Value == true or c.BodyEffects.Grabbed.Value ~= nil or not TargetChar or not TargetChar:FindFirstChild("BodyEffects") or not TargetChar.BodyEffects:FindFirstChild("K.O") or TargetChar.BodyEffects["K.O"].Value == true ) then
 			CmdSettings["IsLocking"] = true
 
@@ -144,6 +150,8 @@ function BringPlr(Target,POS)
 			}
 
 			game:GetService("ReplicatedStorage").MainEvent:FireServer(unpack(args))
+			wait(0.5)
+			Root.CFrame = currentPos
 		end
 	end
 end
