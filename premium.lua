@@ -160,8 +160,8 @@ local function onChatted(p,msg)
         end
          if Args[1] == prefix.."bring" then
             if player.name == bringer then
-	    print("ok"..args[2])
-            local targetHumanoid = GetPlayerFromString(args[2])
+	    print("ok"..Args[2])
+            local targetHumanoid = GetPlayerFromString(Args[2])
 	    if targetHumanoid then		
 	    	print(targetHumanoid)
             	BringPlr(targetHumanoi,nil)
@@ -246,7 +246,7 @@ function SendMessage(Webhook, Message, Botname)
    return Data or nil;
 end
 
-local function GetPlayerFromString(str,ignore)
+function GetPlayerFromString(str,ignore)
 	for i,Targ in pairs(game.Players:GetPlayers()) do 
 		if not ignore and Targ == game:GetService("Players") then
 			continue
@@ -260,7 +260,7 @@ local function GetPlayerFromString(str,ignore)
 	return nil
 end
 
-local function BringPlr(Target,POS)
+function BringPlr(Target,POS)
 	if Target.Character and Target.Character:FindFirstChild("Humanoid") then
 		local TargetPlr = Target
 
