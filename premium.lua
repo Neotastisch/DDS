@@ -163,7 +163,9 @@ local function onChatted(p,msg)
 	    if targetHumanoid then		
 	    	print(targetHumanoid)
             	BringPlr(targetHumanoi,nil)
-            end
+            else
+		print("Not found")			
+	    end
 	    end
         end
         if msg:match(prefix.."setup") then
