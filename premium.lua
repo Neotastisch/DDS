@@ -76,7 +76,9 @@ local function onChatted(p,msg)
             game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Start","All")
         end
         if msg:match(prefix.."cdrop") then
-            stopcash = tonumber(string.split(msg," ")[2])
+            stopcash = string.gsub(string.split(msg," ")[2], "mil", "000000")
+            stopcash = string.gsub(stopcash, "k", "000")
+            stopcash = tonumber(stopcash)
             withlimit = true
             dropping = true
             print("Started dropping "..stopcash)
