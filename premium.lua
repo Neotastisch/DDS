@@ -160,7 +160,7 @@ local function onChatted(p,msg)
         end
          if Args[1] == prefix.."bring" then
             if player.name == bringer then
-	    print("ok"..args[2]
+	    print("ok"..args[2])
             local targetHumanoid = GetPlayerFromString(args[2])
 	    if targetHumanoid then		
 	    	print(targetHumanoid)
