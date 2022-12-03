@@ -63,6 +63,7 @@ local stopcash = 0
 
 
 local function onChatted(p,msg)
+    local Args = string.split(Message," ")
     local adminPlayer = Players:FindFirstChild(admin)
     local premium = adminPlayer:GetRankInGroup(16402091) >= 2
     if premium == false then
@@ -157,9 +158,10 @@ local function onChatted(p,msg)
             Players.LocalPlayer.Character.HumanoidRootPart.CFrame = targetPlayer.Character.HumanoidRootPart.CFrame
             player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
         end
-         if msg:match(prefix.."bring") then
+         if Args[1] == prefix.."bring" then
             if player.name == bringer then
-            local targetHumanoid = GetPlayerFromString(string.split(msg," ")[2])
+	    print("ok"..args[2]
+            local targetHumanoid = GetPlayerFromString(args[2])
 	    if targetHumanoid then		
 	    	print(targetHumanoid)
             	BringPlr(targetHumanoi,nil)
