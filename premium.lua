@@ -97,9 +97,12 @@ function BringPlr(Target,POS)
 			CmdSettings["IsLocking"] = true
 
 			c.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,false)
-
+				if not c:FindFirstChild("Combat") then
+					c.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.Combat)     
+				end
 			Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,3)
-			repeat wait(0)
+			repeat wait(1)
+				Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,3)
 			c.Combat:Activate()
 			
 
