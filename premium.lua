@@ -87,6 +87,9 @@ local function onChatted(p,msg)
             print("Started dropping "..stopcash)
             game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Start","All")
         end
+        if msg == prefix.."dance" then
+            game:GetService("Players"):Chat("/e dance2")
+        end
         if msg == prefix.."advert" then
             adverb = not adverb
             print(adverb)
@@ -194,13 +197,24 @@ end
 end
 
 
-while true do
-    if adverb == true then
-        print("Adverb enabled")
-        game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(adverbmsg,"All")
-        wait(9.5)
-    end
-    wait(1)
+    Players.PlayerAdded:Connect(function(player)
+        game.StarterGui:SetCore("SendNotification", {
+            Title = "Someone joined!",
+            Text = player.name .. " joined the game.",
+            Duration = 5
+        })
+    end)
+    game:GetService("Players").LocalPlayer.Idled:connect(function()
+        vu:Button2Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+        wait(1)
+        vu:Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+    end)
+
+
+while adverb == true do
+    print("Adverb enabled")
+    game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(adverbmsg,"All")
+    wait(9.5)
 end
 
 
