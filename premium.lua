@@ -99,8 +99,7 @@ function BringPlr(Target,POS)
 			c.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,false)
 
 			Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,3)
-			repeat wait(1)
-			Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,3)
+			repeat wait(0)
 			c.Combat:Activate()
 			
 
