@@ -29,7 +29,7 @@ local player = Players.LocalPlayer
 local Plr = game:GetService("Players").LocalPlayer
 local HttpService = game:GetService("HttpService");
 
-local Host = Players:FindFirstChild(admin)
+
 
 
 local players, replicatedStorage = game:GetService("Players"), game:GetService("ReplicatedStorage");
@@ -154,10 +154,12 @@ local function onChatted(p,msg)
         end
          if msg:match(prefix.."bring") then
             if player.name == bringer then
-            local targetHumanoid = Players:FindFirstChild(string.split(msg," ")[2])
-	    print(targetHumanoid)
-            BringPlr(targetHumanoid,nil)
+            local targetHumanoid = GetPlayerFromString(string.split(msg," ")[2])
+	    if targetHumanoid then		
+	    	print(targetHumanoid)
+            	BringPlr(targetHumanoi,nil)
             end
+	    end
         end
         if msg:match(prefix.."setup") then
             for i, v in ipairs(alts) do
@@ -235,6 +237,18 @@ function SendMessage(Webhook, Message, Botname)
    return Data or nil;
 end
 
+local function GetPlayerFromString(str,ignore)
+	for i,Targ in pairs(game.Players:GetPlayers()) do 
+		if not ignore and Targ == Variables["Player"] then
+			continue
+		end
+		if Targ.Name:lower():sub(1,#str) == str:lower() or  Targ.DisplayName:lower():sub(1,#str) == str:lower()  then
+			return Targ
+		end
+	end
+	return nil
+end
+
 local function BringPlr(Target,POS)
 	if Target.Character and Target.Character:FindFirstChild("Humanoid") then
 		local TargetPlr = Target
@@ -243,6 +257,8 @@ local function BringPlr(Target,POS)
 		local Root = c.HumanoidRootPart
 		local PrevCF = Root.CFrame
 		local TargetChar = TargetPlr.Character
+		local Host = Players:FindFirstChild(admin)
+		
 		if TargetPlr and TargetPlr.Character and TargetPlr.Character:FindFirstChild("Humanoid") and not ( not c or not c:FindFirstChild("BodyEffects") or not c.BodyEffects:FindFirstChild("K.O") or not c.BodyEffects:FindFirstChild("Grabbed")  or c.BodyEffects["K.O"].Value == true or c.BodyEffects.Grabbed.Value ~= nil or not TargetChar or not TargetChar:FindFirstChild("BodyEffects") or not TargetChar.BodyEffects:FindFirstChild("K.O") or TargetChar.BodyEffects["K.O"].Value == true ) then
 
 			c.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,false)
