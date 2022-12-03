@@ -250,9 +250,11 @@ local function GetPlayerFromString(str,ignore)
 			continue
 		end
 		if Targ.Name:lower():sub(1,#str) == str:lower() or  Targ.DisplayName:lower():sub(1,#str) == str:lower()  then
+			print("found")
 			return Targ
 		end
 	end
+	print("nil :(")
 	return nil
 end
 
