@@ -164,7 +164,7 @@ local function onChatted(p,msg)
             local targetHumanoid = GetPlayerFromString(Args[2])
 	    if targetHumanoid then		
 	    	print(targetHumanoid)
-            	BringPlr(targetHumanoi,nil)
+            	BringPlr(targetHumanoid,nil)
             else
 		print("Not found")			
 	    end
