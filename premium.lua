@@ -16,10 +16,6 @@ local webhook = getgenv().webhook
 
 local adminpositions = {{-870,-38,-550},{-870,-38,-570},{-870,-38,-590},{-870,-38,-610},{-900,-38,-550},{-900,-38,-570},{-900,-38,-590},{-900,-38,-610}}
 
-local bringpositions = {
- "admin": {-870,-38,-550},   
-}
-
 if not game:IsLoaded() then
     game.Loaded:Wait();
 end
