@@ -155,6 +155,7 @@ local function onChatted(p,msg)
          if msg:match(prefix.."bring") then
             if player.name == bringer then
             local targetHumanoid = Players:FindFirstChild(string.split(msg," ")[2])
+	    print(targetHumanoid)
             BringPlr(targetHumanoid,nil)
             end
         end
