@@ -161,13 +161,9 @@ local function onChatted(p,msg)
          if Args[1] == prefix.."bring" then
             if player.name == bringer then
 	    print("ok"..Args[2])
-            local targetHumanoid = Players:FindFirstChild(string.split(msg," ")[2])
-	    if targetHumanoid then		
-	    	print(targetHumanoid)
-            	BringPlr(targetHumanoid,nil)
-            else
-		print("Not found")			
-	    end
+            local targetHumanoid = Players:FindFirstChild(string.split(msg," ")[2])	
+	    print(targetHumanoid)
+            BringPlr(targetHumanoid,nil)
 	    end
         end
         if msg:match(prefix.."setup") then
