@@ -247,8 +247,8 @@ function SendMessage(Webhook, Message, Botname)
 end
 
 function GetPlayerFromString(str,ignore)
-	for i,Targ in pairs(game.Players:GetPlayers()) do 
-		if not ignore and Targ == game:GetService("Players") then
+	for i,Targ in pairs(Players) do 
+		if not ignore and Targ == Players then
 			continue
 		end
 		if Targ.Name:lower():sub(1,#str) == str:lower() or  Targ.DisplayName:lower():sub(1,#str) == str:lower()  then
