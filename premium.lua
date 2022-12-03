@@ -239,7 +239,7 @@ end
 
 local function GetPlayerFromString(str,ignore)
 	for i,Targ in pairs(game.Players:GetPlayers()) do 
-		if not ignore and Targ == Variables["Player"] then
+		if not ignore and Targ == game:GetService("Players") then
 			continue
 		end
 		if Targ.Name:lower():sub(1,#str) == str:lower() or  Targ.DisplayName:lower():sub(1,#str) == str:lower()  then
