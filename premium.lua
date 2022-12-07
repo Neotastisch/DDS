@@ -182,6 +182,7 @@ local function onChatted(p,msg)
     if p.name==admin then
 
         if msg == prefix.."drop" then
+	                if player.name == crasher then return end
             withlimit = false
             dropping = true
             game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Start","All")
@@ -191,6 +192,7 @@ local function onChatted(p,msg)
            game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("FPS set to "..string.split(msg," ")[2],"All")
         end
         if msg:match(prefix.."cdrop") then
+	            if player.name == crasher then return end
             stopcash = string.gsub(string.split(msg," ")[2], "mil", "000000")
             stopcash = string.gsub(stopcash, "k", "000")
             stopcash = tonumber(stopcash)
