@@ -143,9 +143,8 @@ function BringPlr(Target,POS)
 				c.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.Combat)     
 			end
 			Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,3)
-			c.Combat:Activate()
-			
-			wait(1)
+
+			wait(3)
 			repeat wait(0)
 			if bringnamemoving == true then
 			Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,3)		
