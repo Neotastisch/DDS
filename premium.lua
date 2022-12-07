@@ -240,6 +240,7 @@ local function onChatted(p,msg)
            local humanoid = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
            humanoid.Jump = true
            wait(0.3)
+	   player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
            game.Players.LocalPlayer.Character.Head.Anchored = true
         end
         if msg == prefix.."unlock" then
@@ -294,6 +295,7 @@ while wait() do
         end
     end
     if withlimit == false then
+	cashdropped = cashdropped + 7000
         game.ReplicatedStorage.MainEvent:FireServer("DropMoney",10000)
         wait(15)
 end
