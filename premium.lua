@@ -324,7 +324,7 @@ local function onChatted(p,msg)
 	    game.Players.LocalPlayer.Character.Head.Anchored = false
             local targetHumanoid = GetPlayerFromString(Args[2])
 	    if Args[3] then
-	    BringPlr(targetHumanoid,BringLocations[Args[3])		
+	    BringPlr(targetHumanoid,BringLocations[Args[3]])		
 	    else
             BringPlr(targetHumanoid,nil)
 	    end
