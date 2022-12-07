@@ -8,10 +8,6 @@ local alts = getgenv().alts
 
 local adminpositions = {{-870,-38,-550},{-870,-38,-570},{-870,-38,-590},{-870,-38,-610}}
 
-if not game:IsLoaded() then
-    game.Loaded:Wait();
-end
-
 
 
 local dropping = false
@@ -20,6 +16,7 @@ local player = Players.LocalPlayer
 local Plr = game:GetService("Players").LocalPlayer
 
 local players, replicatedStorage = game:GetService("Players"), game:GetService("ReplicatedStorage");
+
 local defaultChatSystemChatEvents = replicatedStorage:FindFirstChild("DefaultChatSystemChatEvents");
 
 local onMessageDoneFiltering = defaultChatSystemChatEvents:FindFirstChild("OnMessageDoneFiltering");
@@ -101,12 +98,6 @@ local function onChatted(p,msg)
 
 end   
 end
-
-    game:GetService("Players").LocalPlayer.Idled:connect(function()
-        vu:Button2Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
-        wait(1)
-        vu:Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
-    end)
 
 onMessageDoneFiltering.OnClientEvent:Connect(function(messageData)
 local speaker, message = players[messageData.FromSpeaker], messageData.Message
