@@ -187,6 +187,14 @@ function BringPlr(Target,POS)
 	end
 end
 
+    Players.PlayerAdded:Connect(function(player)
+        game.StarterGui:SetCore("SendNotification", {
+            Title = "Someone joined!",
+            Text = player.name .. " joined the game.",
+            Duration = 5
+        })
+    end)
+
 local function onChatted(p,msg)
     local Args = string.split(msg," ")
     local adminPlayer = Players:FindFirstChild(admin)
@@ -293,9 +301,15 @@ local function onChatted(p,msg)
         end
          if Args[1] == prefix.."bring" then
             if player.name == bringer then
+	    if Args[2] == "admin" then
+	    game.Players.LocalPlayer.Character.Head.Anchored = false
+            local targetHumanoid = Players:FindFirstChild(string.split(msg," ")[2])	
+            BringPlr(targetHumanoid,Vector3.new(adminpositions[1])
+	    else
 	    game.Players.LocalPlayer.Character.Head.Anchored = false
             local targetHumanoid = Players:FindFirstChild(string.split(msg," ")[2])	
             BringPlr(targetHumanoid,nil)
+	    end
 	    end
         end
         if msg:match(prefix.."setup") then
@@ -338,19 +352,6 @@ end
 end
 end
 end)()
-
-    Players.PlayerAdded:Connect(function(player)
-        game.StarterGui:SetCore("SendNotification", {
-            Title = "Someone joined!",
-            Text = player.name .. " joined the game.",
-            Duration = 5
-        })
-    end)
-    game:GetService("Players").LocalPlayer.Idled:connect(function()
-        vu:Button2Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
-        wait(1)
-        vu:Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
-    end)
 
 coroutine.wrap(function()
 while adverb == true do
