@@ -86,7 +86,6 @@ coroutine.wrap(function()
 while true do
 if bringname != "" then
 Players:FindFirstChild(bringname).Character:FindFirstChild("Humanoid").Running:Connect(function(speed)
-	print(speed)
 	if speed > 0.1 then
 		bringnamemoving = true
 		else
@@ -295,9 +294,7 @@ local function onChatted(p,msg)
          if Args[1] == prefix.."bring" then
             if player.name == bringer then
 	    game.Players.LocalPlayer.Character.Head.Anchored = false
-	    print("ok"..Args[2])
             local targetHumanoid = Players:FindFirstChild(string.split(msg," ")[2])	
-	    print(targetHumanoid)
             BringPlr(targetHumanoid,nil)
 	    end
         end
