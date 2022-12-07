@@ -20,10 +20,7 @@ if not game:IsLoaded() then
     game.Loaded:Wait();
 end
 
-local bb=game:service'VirtualUser'
-game:service'Players'.LocalPlayer.Idled:connect(function()
-bb:CaptureController()bb:ClickButton2(Vector2.new())
-end)
+
 		
 game.StarterGui:SetCore("SendNotification", {
         Title = "DDS";
@@ -38,8 +35,12 @@ local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 local Plr = game:GetService("Players").LocalPlayer
 local HttpService = game:GetService("HttpService");
+local bb = game:GetService("VirtualUser");
 
-
+player.Idled:connect(function()
+bb:CaptureController()
+bb:ClickButton2(Vector2.new())
+end)
 
 
 local players, replicatedStorage = game:GetService("Players"), game:GetService("ReplicatedStorage");
