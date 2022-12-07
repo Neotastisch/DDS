@@ -332,9 +332,10 @@ local function onChatted(p,msg)
         if msg:match(prefix.."setup") then
             for i, v in ipairs(alts) do
                 if v == player.name then
-		    game.Players.LocalPlayer.Character.Head.Anchored = true
+		    game.Players.LocalPlayer.Character.Head.Anchored = false
                     player.Character.HumanoidRootPart.CFrame = CFrame.new(adminpositions[i][1],adminpositions[i][2],adminpositions[i][3])
                     player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
+					
                 end
             end
         end
