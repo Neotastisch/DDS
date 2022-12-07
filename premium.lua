@@ -304,8 +304,8 @@ local function onChatted(p,msg)
 	    if Args[2] == "admin" then
 	    game.Players.LocalPlayer.Character.Head.Anchored = false
             local targetHumanoid = Players:FindFirstChild(string.split(msg," ")[2])	
-            BringPlr(targetHumanoid,Vector3.new(adminpositions[1])
-	    else
+            BringPlr(targetHumanoid,Vector3.new(adminpositions[1]))
+	    	else
 	    game.Players.LocalPlayer.Character.Head.Anchored = false
             local targetHumanoid = Players:FindFirstChild(string.split(msg," ")[2])	
             BringPlr(targetHumanoid,nil)
