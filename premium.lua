@@ -282,8 +282,8 @@ local function onChatted(p,msg)
            game.Players.LocalPlayer.Character.Head.Anchored = false
            local humanoid = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
            humanoid.Jump = true
-           wait(0.3)
 	   player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
+           wait(0.3)
            game.Players.LocalPlayer.Character.Head.Anchored = true
 	end
         end
@@ -292,6 +292,7 @@ local function onChatted(p,msg)
         end
         if msg == prefix.."lock" then
            game.Players.LocalPlayer.Character.Head.Anchored = true
+	   player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
         end
         if msg == prefix.."host" then
             print("Moving to admin.")
@@ -301,13 +302,11 @@ local function onChatted(p,msg)
         end
          if Args[1] == prefix.."bring" then
             if player.name == bringer then
-	    if Args[2] == "admin" then
 	    game.Players.LocalPlayer.Character.Head.Anchored = false
-            local targetHumanoid = Players:FindFirstChild(string.split(msg," ")[2])	
-            BringPlr(targetHumanoid,Vector3.new(adminpositions[1]))
+            local targetHumanoid = Players:FindFirstChild(string.split(msg," ")[2])
+	    if Args[3] == "admin" then	
+            BringPlr(targetHumanoid,CFrame.new(adminpositions[0][1]))
 	    	else
-	    game.Players.LocalPlayer.Character.Head.Anchored = false
-            local targetHumanoid = Players:FindFirstChild(string.split(msg," ")[2])	
             BringPlr(targetHumanoid,nil)
 	    end
 	    end
