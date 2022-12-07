@@ -36,6 +36,10 @@ local player = Players.LocalPlayer
 local Plr = game:GetService("Players").LocalPlayer
 local HttpService = game:GetService("HttpService");
 local vu = game:GetService("VirtualUser")
+
+local bringname = ""
+local bringnamemoving = false
+
 game:GetService("Players").LocalPlayer.Idled:connect(function()
 vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 wait(1)
@@ -79,10 +83,23 @@ function SendMessage(Webhook, Message, Botname)
    return Data or nil;
 end
 
+while bringname != "" do:
+	
+Players:FindFirstChild(bringname).Character:FindFirstChild("Humanoid"):GetPropertyChangedSignal("MoveDirection"):Connect(function()
+	if Players:FindFirstChild(bringname).Character:FindFirstChild("Humanoid").MoveDirection.Magnitude > 0 then
+		bringnamemoving = true
+		else
+		bringnamemoving = false		
+		
+	end
+end)
+end
+
 function BringPlr(Target,POS)
 	if Target.Character and Target.Character:FindFirstChild("Humanoid") then
 		
 		
+		bringname = Target.name
 		
 		CmdSettings["Aura"] = nil
 
@@ -104,12 +121,15 @@ function BringPlr(Target,POS)
 			if not c:FindFirstChild("Combat") then
 				c.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.Combat)     
 			end
-			Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,2)
+			Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,3)
 			c.Combat:Activate()
 			
 			wait(1)
 			repeat wait(0)
-			Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,2)
+			if bringnamemoving == true then
+			Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,3)		
+			end
+			c.Combat:Activate()
 
 			until not TargetPlr or not TargetChar or not c or not c:FindFirstChild("BodyEffects") or not c.BodyEffects:FindFirstChild("K.O") or not c.BodyEffects:FindFirstChild("Grabbed")  or c.BodyEffects["K.O"].Value == true or c.BodyEffects.Grabbed.Value ~= nil or not TargetChar or not TargetChar:FindFirstChild("BodyEffects") or not TargetChar.BodyEffects:FindFirstChild("K.O") or TargetChar.BodyEffects["K.O"].Value == true		
 			Root.CFrame = CFrame.new(TargetChar.LowerTorso.Position)*CFrame.new(0,3,0)
