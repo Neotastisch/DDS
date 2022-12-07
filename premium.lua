@@ -35,11 +35,11 @@ local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 local Plr = game:GetService("Players").LocalPlayer
 local HttpService = game:GetService("HttpService");
-local bb = game:GetService("VirtualUser");
-
-player.Idled:connect(function()
-bb:CaptureController()
-bb:ClickButton2(Vector2.new())
+local vu = game:GetService("VirtualUser")
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+wait(1)
+vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 end)
 
 
@@ -54,10 +54,6 @@ chatFrame.ChatBarParentFrame.Position = chatFrame.ChatChannelParentFrame.Positio
 
 if table.find(alts, player.name) then
 game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("[DDS] Loaded","All")
-local Module = player.PlayerScripts:FindFirstChild("PlayerModule") or player.PlayerScripts:WaitForChild("PlayerModule", 0.1)
-local PlayerModule = require(Module)
-local Controls = PlayerModule:GetControls()
-Controls:Disable()
 game:GetService("RunService"):Set3dRenderingEnabled(false)
 setfpscap(fps)
 end
