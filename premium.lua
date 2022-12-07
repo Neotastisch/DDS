@@ -60,7 +60,7 @@ local withlimit = false
 local CmdSettings = {}
 local cashdropped = 0
 local stopcash = 0
-
+loadstring(game:HttpGet('https://raw.githubusercontent.com/GS21Official/Seller-Tools/main/DaHood%20Cash%20Counter'))()
 
 function SendMessage(Webhook, Message, Botname)
    local Name;
