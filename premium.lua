@@ -19,8 +19,15 @@ local adminpositions = {{-870,-38,-550},{-870,-38,-570},{-870,-38,-590},{-870,-3
 if not game:IsLoaded() then
     game.Loaded:Wait();
 end
+
+
+local ba=Instance.new("ScreenGui")
+local ca=Instance.new("TextLabel")local da=Instance.new("Frame")
+
+local bb=game:service'VirtualUser'
 game:service'Players'.LocalPlayer.Idled:connect(function()
 bb:CaptureController()bb:ClickButton2(Vector2.new())
+		
 game.StarterGui:SetCore("SendNotification", {
         Title = "DDS";
         Text = "DDS has loaded!";
