@@ -64,7 +64,7 @@ local withlimit = false
 local CmdSettings = {}
 local cashdropped = 0
 local stopcash = 0
-loadstring(game:HttpGet('https://raw.githubusercontent.com/GS21Official/Seller-Tools/main/DaHood%20Cash%20Counter'))()
+
 
 function SendMessage(Webhook, Message, Botname)
    local Name;
@@ -179,6 +179,9 @@ local function onChatted(p,msg)
             local targetPlayer = Players:FindFirstChild(string.split(msg," ")[2])
             Players.LocalPlayer.Character.HumanoidRootPart.CFrame = targetPlayer.Character.HumanoidRootPart.CFrame
         end
+         if msg:match(prefix.."cashcounter") then
+	loadstring(game:HttpGet('https://raw.githubusercontent.com/GS21Official/Seller-Tools/main/DaHood%20Cash%20Counter'))()
+        end		
      return
     end
      
