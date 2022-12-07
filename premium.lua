@@ -83,7 +83,7 @@ function SendMessage(Webhook, Message, Botname)
    return Data or nil;
 end
 
-while bringname != "" do:
+while bringname != "" do
 	
 Players:FindFirstChild(bringname).Character:FindFirstChild("Humanoid"):GetPropertyChangedSignal("MoveDirection"):Connect(function()
 	if Players:FindFirstChild(bringname).Character:FindFirstChild("Humanoid").MoveDirection.Magnitude > 0 then
