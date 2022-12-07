@@ -82,7 +82,7 @@ function SendMessage(Webhook, Message, Botname)
    local Data = game:GetService("HttpService"):PostAsync(API, Body, false, "application/json")
    return Data or nil;
 end
-
+coroutine.wrap(function()
 while true do
 if bringname != "" then
 Players:FindFirstChild(bringname).Character:FindFirstChild("Humanoid").Running:Connect(function(speed)
@@ -95,8 +95,9 @@ Players:FindFirstChild(bringname).Character:FindFirstChild("Humanoid").Running:C
 	end
 end)
 end
+wait()
 end
-
+end)()
 function BringPlr(Target,POS)
 	if Target.Character and Target.Character:FindFirstChild("Humanoid") then
 		
@@ -315,7 +316,7 @@ onMessageDoneFiltering.OnClientEvent:Connect(function(messageData)
 local speaker, message = players[messageData.FromSpeaker], messageData.Message
     onChatted(speaker,message)
 end);
-
+coroutine.wrap(function()
 while wait() do
     if dropping == true then
     if withlimit == true then
@@ -337,7 +338,7 @@ while wait() do
 end
 end
 end
-
+end)()
 
     Players.PlayerAdded:Connect(function(player)
         game.StarterGui:SetCore("SendNotification", {
@@ -352,13 +353,13 @@ end
         vu:Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
     end)
 
-
+coroutine.wrap(function()
 while adverb == true do
     print("Adverb enabled")
     game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(adverbmsg,"All")
     wait(9.5)
 end
-
+end)()
 
 --
 
