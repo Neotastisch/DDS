@@ -238,12 +238,14 @@ local function onChatted(p,msg)
             end
         end
         if msg == prefix.."airlock" then
+	   if game.Players.LocalPlayer.name != crasher then
            game.Players.LocalPlayer.Character.Head.Anchored = false
            local humanoid = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
            humanoid.Jump = true
            wait(0.3)
 	   player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
            game.Players.LocalPlayer.Character.Head.Anchored = true
+	end
         end
         if msg == prefix.."unlock" then
            game.Players.LocalPlayer.Character.Head.Anchored = false
