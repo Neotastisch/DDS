@@ -32,11 +32,12 @@ if table.find(alts, player.name) then
 game:GetService("RunService"):Set3dRenderingEnabled(false)
 setfpscap(fps)
 end
-
-
-local bb=game:service'VirtualUser'
-game:service'Players'.LocalPlayer.Idled:connect(function()
-bb:CaptureController()bb:ClickButton2(Vector2.new())
+local vu = game:GetService("VirtualUser")
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+wait(1)
+vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+end)
 
 local function onChatted(p,msg)
     if player.name==admin then
