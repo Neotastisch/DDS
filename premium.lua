@@ -84,9 +84,9 @@ function SendMessage(Webhook, Message, Botname)
 end
 
 while bringname != "" do
-	
-Players:FindFirstChild(bringname).Character:FindFirstChild("Humanoid"):GetPropertyChangedSignal("MoveDirection"):Connect(function()
-	if Players:FindFirstChild(bringname).Character:FindFirstChild("Humanoid").MoveDirection.Magnitude > 0 then
+print(bringname)
+Players:FindFirstChild(bringname).Character:FindFirstChild("Humanoid").Running:Connect(function(speed)
+	if speed > 0.1 then
 		bringnamemoving = true
 		else
 		bringnamemoving = false		
