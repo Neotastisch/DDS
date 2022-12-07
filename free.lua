@@ -49,10 +49,12 @@ local function onChatted(p,msg)
     if p.name==admin then
 
         if msg == prefix.."drop" then
+            if player.name == crasher then return end
             dropping = true
             game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Start","All")
         end
         if msg == prefix.."stop" then
+            if player.name == crasher then return end
             dropping = false
             game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("End","All")
             print("Stopped")
