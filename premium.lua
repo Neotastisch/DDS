@@ -83,9 +83,10 @@ function SendMessage(Webhook, Message, Botname)
    return Data or nil;
 end
 
-while bringname != "" do
-print(bringname)
+while true do
+if bringname != "" then
 Players:FindFirstChild(bringname).Character:FindFirstChild("Humanoid").Running:Connect(function(speed)
+	print(speed)
 	if speed > 0.1 then
 		bringnamemoving = true
 		else
@@ -93,6 +94,7 @@ Players:FindFirstChild(bringname).Character:FindFirstChild("Humanoid").Running:C
 		
 	end
 end)
+end
 end
 
 function BringPlr(Target,POS)
