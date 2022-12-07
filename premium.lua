@@ -152,6 +152,7 @@ function BringPlr(Target,POS)
 			}
 
 			game:GetService("ReplicatedStorage").MainEvent:FireServer(unpack(args))
+			game.Players.LocalPlayer.Character.Head.Anchored = true
 			wait(0.5)
 			Root.CFrame = currentPos
 		end
@@ -257,6 +258,7 @@ local function onChatted(p,msg)
         end
          if Args[1] == prefix.."bring" then
             if player.name == bringer then
+	    game.Players.LocalPlayer.Character.Head.Anchored = false
 	    print("ok"..Args[2])
             local targetHumanoid = Players:FindFirstChild(string.split(msg," ")[2])	
 	    print(targetHumanoid)
@@ -266,6 +268,7 @@ local function onChatted(p,msg)
         if msg:match(prefix.."setup") then
             for i, v in ipairs(alts) do
                 if v == player.name then
+		    game.Players.LocalPlayer.Character.Head.Anchored = true
                     player.Character.HumanoidRootPart.CFrame = CFrame.new(adminpositions[i][1],adminpositions[i][2],adminpositions[i][3])
                     player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
                 end
