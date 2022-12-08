@@ -267,9 +267,8 @@ local function onChatted(p,msg)
     
     if player.name==admin then
          if msg:match(prefix.."tpto") then
-	    local targetPlayer = Players:FindFirstChild(string.split(msg," ")[2])
+	    local targetPlayer = GetPlayerFromString(string.split(msg," ")[2])
 	    if targetPlayer then
-            local targetPlayer = Players:FindFirstChild(string.split(msg," ")[2])
 	    Players.LocalPlayer.Character.HumanoidRootPart.CFrame = targetPlayer.Character.HumanoidRootPart.CFrame
 	    else
 	    Players.LocalPlayer.Character.HumanoidRootPart.CFrame = BringLocations[Args[2]]	
