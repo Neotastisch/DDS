@@ -144,7 +144,7 @@ function BringPlr(Target,POS)
 			end
 			Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,3)
 
-			wait(3)
+			wait(1.5)
 			repeat wait(0)
 			if bringnamemoving == true then
 			Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,3)		
@@ -199,8 +199,8 @@ function BringPlr(Target,POS)
 			wait(0.5)
 			Root.CFrame = currentPos
 			player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
-			wait(0.5)
 			game.Players.LocalPlayer.Character.Head.Anchored = true
+			wait(0.5)
 		end
 	end
 end
