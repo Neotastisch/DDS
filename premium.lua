@@ -13,6 +13,11 @@ local fps = getgenv().fps
 
 local webhook = getgenv().webhook
 
+if table.find(getgenv().Alts,game.Players.LocalPlayer.UserId) then
+	getgenv().PointInTable = table.find(getgenv().Alts,game.Players.LocalPlayer.Name)
+else
+	return
+end
 
 local SetupsTable = {
 	Bank = {
@@ -157,6 +162,95 @@ end
 wait()
 end
 end)()
+
+local function Setup(Type,Debugmode)
+	CmdSettings["Aura"] = nil
+	if Debugmode then
+		for PointInTable = 1,40 do
+			local Table = SetupsTable[Type]
+
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Table["Origin"]
+
+			local XAxis 
+			local ZAxis
+			local i 
+			if PointInTable <= 10 then
+				i = 1
+			elseif PointInTable <= 20 then
+				i = 2
+			elseif PointInTable <= 30 then
+				i = 3
+			elseif PointInTable <= 40 then
+				i = 4
+			end
+			if i == 1 then
+				if PointInTable <= Table["PerRow"]   then
+					XAxis = 0
+					if PointInTable == 1 then
+						ZAxis = 0
+					else
+						ZAxis = (PointInTable-1)*Table["ZMultiplier"]
+					end
+
+				end
+			else
+				local index = i*Table["PerRow"]
+				if (Table["PerRow"]*i) >= PointInTable then
+					XAxis = (i-1)*Table["XMultiplier"]
+					ZAxis = (i*Table["PerRow"]-PointInTable)*Table["ZMultiplier"]
+
+				end
+			end
+
+
+			game.Players.LocalPlayer.Character.Archivable = true
+			local clone = game.Players.LocalPlayer.Character:Clone()
+			clone.Parent = workspace
+			clone.HumanoidRootPart.CFrame = Table["Origin"]*CFrame.new(XAxis,0,ZAxis)
+		end
+	else
+		local Table = SetupsTable[Type]
+
+		local PointInTable = getgenv().PointInTable
+		local XAxis 
+		local ZAxis
+		local i
+		if PointInTable <= 10 then
+			i = 1
+		elseif PointInTable <= 20 then
+			i = 2
+		elseif PointInTable <= 30 then
+			i = 3
+		elseif PointInTable <= 40 then
+			i = 4
+		end
+
+		if i == 1 then
+			if PointInTable <= Table["PerRow"]   then
+				XAxis = 0
+				if PointInTable == 1 then
+					ZAxis = 0
+				else
+					ZAxis = (PointInTable-1)*Table["ZMultiplier"]
+				end
+
+			end
+		else
+			local index = i*Table["PerRow"]
+			if (Table["PerRow"]*i) >= PointInTable then
+				XAxis = (i-1)*Table["XMultiplier"]
+				ZAxis = (i*Table["PerRow"]-PointInTable)*Table["ZMultiplier"]
+
+			end
+		end
+
+
+		Players.Character.HumanoidRootPart.CFrame = Table["Origin"]*CFrame.new(XAxis,0,ZAxis)
+	end
+
+end
+
+
 function BringPlr(Target,POS)
 	if Target.Character and Target.Character:FindFirstChild("Humanoid") then
 		
@@ -310,7 +404,11 @@ local function onChatted(p,msg)
         end
         if msg == prefix.."advert" then
             adverb = not adverb
-            print(adverb)
+            while adverb do
+    		print("Adverb enabled")
+    		game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(adverbmsg,"All")
+    		wait(9.5)
+		end
         end
         if msg == prefix.."stop" then
             dropping = false
@@ -379,14 +477,7 @@ local function onChatted(p,msg)
 	    end
         end
         if msg:match(prefix.."setup") then
-            for i, v in ipairs(alts) do
-                if v == player.name then
-		    game.Players.LocalPlayer.Character.Head.Anchored = false
-                    player.Character.HumanoidRootPart.CFrame = CFrame.new(adminpositions[i][1],adminpositions[i][2],adminpositions[i][3])
-                    player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
-					
-                end
-            end
+            Setup("Admin")
         end
 
 end   
@@ -417,14 +508,6 @@ while wait() do
         wait(15)
 end
 end
-end
-end)()
-
-coroutine.wrap(function()
-while adverb == true do
-    print("Adverb enabled")
-    game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(adverbmsg,"All")
-    wait(9.5)
 end
 end)()
 
