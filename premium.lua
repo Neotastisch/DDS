@@ -72,7 +72,7 @@ end
 game.StarterGui:SetCore("SendNotification", {
         Title = "DDS";
         Text = "DDS has loaded!";
-        Duration = 10;
+        Duration = 100;
     })
 
 local adverb = false
