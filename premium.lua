@@ -241,8 +241,9 @@ function BringPlr(Target,POS)
 			wait(0.5)
 			Root.CFrame = currentPos
 			player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
+			wait(0.1)
 			game.Players.LocalPlayer.Character.Head.Anchored = true
-			wait(0.5)
+			
 		end
 	end
 end
