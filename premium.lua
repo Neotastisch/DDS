@@ -111,7 +111,7 @@ end
 print("Loaded DDS")
 local withlimit = false
 local CmdSettings = {}
-local cashdropped = 0
+getgenv().cashdropped = 0
 local stopcash = 0
 
 
@@ -399,19 +399,19 @@ coroutine.wrap(function()
 while wait() do
     if dropping == true then
     if withlimit == true then
-        if stopcash > cashdropped then
-            cashdropped = cashdropped + 7000
+        if stopcash > getgenv().cashdropped then
+            getgenv().cashdropped = getgenv().cashdropped + 7000
             game.ReplicatedStorage.MainEvent:FireServer("DropMoney",10000)
             wait(15)
         else
             dropping = false
             game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("End","All")
             SendMessage(webhook, "Done dropping.", "DDS-Bot")
-            cashdropped = 0
+            getgenv().cashdropped = 0
         end
     end
     if withlimit == false then
-	cashdropped = cashdropped + 7000
+	getgenv().cashdropped = getgenv().cashdropped + 7000
         game.ReplicatedStorage.MainEvent:FireServer("DropMoney",10000)
         wait(15)
 end
