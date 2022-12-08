@@ -267,7 +267,13 @@ local function onChatted(p,msg)
     
     if player.name==admin then
          if msg:match(prefix.."tpto") then
+	    if Args[3] then
+	    Players.LocalPlayer.Character.HumanoidRootPart.CFrame =BringLocations[Args[3]]
+	    else
             local targetPlayer = Players:FindFirstChild(string.split(msg," ")[2])
+	    Players.LocalPlayer.Character.HumanoidRootPart.CFrame = targetPlayer.Character.HumanoidRootPart.CFrame		
+	    end
+            
             Players.LocalPlayer.Character.HumanoidRootPart.CFrame = targetPlayer.Character.HumanoidRootPart.CFrame
         end
          if msg:match(prefix.."cashcounter") then
