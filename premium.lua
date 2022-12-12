@@ -13,12 +13,6 @@ local fps = getgenv().fps
 
 local webhook = getgenv().webhook
 
-if table.find(getgenv().Alts,game.Players.LocalPlayer.UserId) then
-	getgenv().PointInTable = table.find(getgenv().Alts,game.Players.LocalPlayer.Name)
-else
-	return
-end
-
 local SetupsTable = {
 	Bank = {
 		Origin = CFrame.new(-386.826202, 21.2503242, -325.340912, 0.998742342, 0, -0.0501373149, 0, 1, 0, 0.0501373149, 0, 0.998742342)*CFrame.new(0,0,-3),
