@@ -323,8 +323,10 @@ local function onChatted(p,msg)
            game.Players.LocalPlayer.Character.Head.Anchored = false
         end
         if msg == prefix.."lock" then
+           if game.Players.LocalPlayer.name != crasher then
            game.Players.LocalPlayer.Character.Head.Anchored = true
 	   player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
+	   end
         end
         if msg == prefix.."host" then
             print("Moving to admin.")
