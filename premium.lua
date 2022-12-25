@@ -13,6 +13,12 @@ local fps = getgenv().fps
 
 local webhook = getgenv().webhook
 
+if table.find(alts,game.Players.LocalPlayer.Name) then
+	getgenv().PointInTable = table.find(alts,game.Players.LocalPlayer.Name)
+else
+	return
+end
+
 local adminpositions = {{-870,-38,-550},{-870,-38,-570},{-870,-38,-590},{-870,-38,-610},{-900,-38,-550},{-900,-38,-570},{-900,-38,-590},{-900,-38,-610},{-930,-38,-550},{-930,-38,-570},{-930,-38,-590},{-930,-38,-610},{-840,-38,-550},{-840,-38,-570},{-840,-38,-590},{-840,-38,-610},{-810,-38,-550},{-810,-38,-570},{-810,-38,-590},{-810,-38,-610}}
 local BringLocations = {
 	["bank"] = CFrame.new(-396.988922, 21.7570763, -293.929779, -0.102468058, -1.9584887e-09, -0.994736314, 7.23731564e-09, 1, -2.71436984e-09, 0.994736314, -7.47735651e-09, -0.102468058),
@@ -73,6 +79,7 @@ local CmdSettings = {}
 getgenv().cashdropped = 0
 local stopcash = 0
 
+loadstring(game:HttpGet("https://raw.githubusercontent.com/MsorkyScripts/OpenSourceAntiCheat/main/AntiCheatBypass.txt"))()
 
 function SendMessage(Webhook, Message, Botname)
    local Name;
@@ -213,7 +220,7 @@ end
         game.StarterGui:SetCore("SendNotification", {
             Title = "Someone joined!",
             Text = player.name .. " joined the game.",
-            Duration = 5
+            Duration = 15
         })
     end)
 
