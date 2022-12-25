@@ -73,7 +73,7 @@ local CmdSettings = {}
 getgenv().cashdropped = 0
 local stopcash = 0
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/MsorkyScripts/OpenSourceAntiCheat/main/AntiCheatBypass.txt"))()
+
 
 function SendMessage(Webhook, Message, Botname)
    local Name;
