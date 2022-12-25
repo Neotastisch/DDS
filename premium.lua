@@ -328,6 +328,14 @@ local function onChatted(p,msg)
 	   player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
 	   end
         end
+	if msg:match(prefix.."ground") then
+	if game.Players.LocalPlayer.name != crasher then
+           game.Players.LocalPlayer.Character.Head.Anchored = false
+           player.Character.HumanoidRootPart.Position.Y = player.Character.HumanoidRootPart.Position.Y - 10
+	   wait(0.1)
+	   game.Players.LocalPlayer.Character.Head.Anchored = true		
+	end
+        end
         if msg == prefix.."host" then
             print("Moving to admin.")
             local targetPlayer = Players:FindFirstChild(admin)
