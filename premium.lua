@@ -332,7 +332,7 @@ local function onChatted(p,msg)
 	if msg:match(prefix.."ground") then
 	if game.Players.LocalPlayer.name != crasher then
            game.Players.LocalPlayer.Character.Head.Anchored = false
-           player.Character.HumanoidRootPart.Position.Y = player.Character.HumanoidRootPart.Position.Y - 10
+           player.Character.HumanoidRootPart.Position = Vector3.new(player.Character.HumanoidRootPart.Position.X, player.Character.HumanoidRootPart.Position.Y-10, player.Character.HumanoidRootPart.Position.Z)
 	   wait(0.1)
 	   game.Players.LocalPlayer.Character.Head.Anchored = true		
 	end
