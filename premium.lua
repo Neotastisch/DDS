@@ -285,7 +285,7 @@ local function onChatted(p,msg)
             print("Stopped")
         end
          if msg == prefix.."dropped" then
-            game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(cashdropped.."$","All")
+            game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(getgenv().cashdropped.."$","All")
         end
          if msg == prefix.."showscreen" then
             game:GetService("RunService"):Set3dRenderingEnabled(true)
