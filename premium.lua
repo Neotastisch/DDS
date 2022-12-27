@@ -332,16 +332,18 @@ local function onChatted(p,msg)
 	if msg:match(prefix.."ground") then
 	if game.Players.LocalPlayer.name != crasher then
            game.Players.LocalPlayer.Character.Head.Anchored = false
-           player.Character.HumanoidRootPart.Position = Vector3.new(player.Character.HumanoidRootPart.Position.X, player.Character.HumanoidRootPart.Position.Y-10, player.Character.HumanoidRootPart.Position.Z)
+           player.Character.HumanoidRootPart.Position = Vector3.new(player.Character.HumanoidRootPart.Position.X, player.Character.HumanoidRootPart.Position.Y-7, player.Character.HumanoidRootPart.Position.Z)
 	   wait(0.1)
 	   game.Players.LocalPlayer.Character.Head.Anchored = true		
 	end
         end
         if msg == prefix.."host" then
             print("Moving to admin.")
+	game.Players.LocalPlayer.Character.Head.Anchored = false
             local targetPlayer = Players:FindFirstChild(admin)
             Players.LocalPlayer.Character.HumanoidRootPart.CFrame = targetPlayer.Character.HumanoidRootPart.CFrame
             player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
+			game.Players.LocalPlayer.Character.Head.Anchored = true
         end
          if Args[1] == prefix.."bring" then
             if player.name == bringer then
@@ -357,6 +359,7 @@ local function onChatted(p,msg)
         if msg:match(prefix.."setup") then
             for i, v in ipairs(alts) do
                 if v == player.name then
+					game.Players.LocalPlayer.Character.Head.Anchored = false
                     player.Character.HumanoidRootPart.CFrame = CFrame.new(adminpositions[i][1],adminpositions[i][2],adminpositions[i][3])
                     player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
 		    wait(0.1)
