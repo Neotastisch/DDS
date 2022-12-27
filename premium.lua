@@ -243,7 +243,10 @@ local function onChatted(p,msg)
         end
          if msg:match(prefix.."cashcounter") then
 	loadstring(game:HttpGet('https://raw.githubusercontent.com/GS21Official/Seller-Tools/main/DaHood%20Cash%20Counter'))()
-        end		
+        end	
+         if msg:match(prefix.."sellinggui") then
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/Crostide/cdhc/main/gui"))()
+        end
      return
     end
      
