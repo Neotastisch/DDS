@@ -149,7 +149,7 @@ function BringPlr(Target,POS)
 			end
 			Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,3)
 			bringname = Target.name
-			wait(1)
+			wait(1.5)
 			repeat wait(0)
 			if bringnamemoving == true then
 			Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,3)
