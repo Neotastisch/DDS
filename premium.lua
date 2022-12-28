@@ -354,6 +354,7 @@ end
             local targetPlayer = Players:FindFirstChild(admin)
             Players.LocalPlayer.Character.HumanoidRootPart.CFrame = targetPlayer.Character.HumanoidRootPart.CFrame
             player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
+			wait(0.1)
 			game.Players.LocalPlayer.Character.Head.Anchored = true
         end
          if Args[1] == prefix.."bring" then
