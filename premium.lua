@@ -66,6 +66,9 @@ if table.find(alts, player.name) then
 game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("[DDS] Loaded","All")
 game:GetService("RunService"):Set3dRenderingEnabled(false)
 setfpscap(fps)
+if game.Players.LocalPlayer.Character.BodyEffects:FindFirstChild("Attacking") then
+        game.Players.LocalPlayer.Character.BodyEffects:FindFirstChild("Attacking"):Destroy()
+end
 end
 print("Loaded DDS")
 local withlimit = false
@@ -73,10 +76,6 @@ local CmdSettings = {}
 getgenv().cashdropped = 0
 local stopcash = 0
 
-
-if game.Players.LocalPlayer.Character.BodyEffects:FindFirstChild("Attacking") then
-        game.Players.LocalPlayer.Character.BodyEffects:FindFirstChild("Attacking"):Destroy()
-    end
 
 
 
@@ -251,6 +250,11 @@ local function onChatted(p,msg)
 	if msg:match(prefix.."crash2") then	
 	loadstring(game:HttpGet('https://raw.githubusercontent.com/lerkermer/lua-projects/master/SuperCustomServerCrasher'))()
 	end
+	if msg:match(prefix.."godme") then
+	if game.Players.LocalPlayer.Character.BodyEffects:FindFirstChild("Attacking") then
+        game.Players.LocalPlayer.Character.BodyEffects:FindFirstChild("Attacking"):Destroy()
+end
+			end
      return
     end
      
