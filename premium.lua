@@ -110,21 +110,6 @@ end
 coroutine.wrap(function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/MsorkyScripts/OpenSourceAntiCheat/main/AntiCheatBypass.txt"))()
 end)()
-coroutine.wrap(function()
-while true do
-if bringname != "" then
-Players:FindFirstChild(bringname).Character:FindFirstChild("Humanoid").Running:Connect(function(speed)
-	if speed > 0.1 then
-		bringnamemoving = true
-		else
-		bringnamemoving = false		
-		
-	end
-end)
-end
-wait()
-end
-end)()
 
 
 function BringPlr(Target,POS)
@@ -152,7 +137,7 @@ function BringPlr(Target,POS)
 			c.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,false)
 
 			Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,1)
-			bringname = Target.name
+
 			repeat wait()
 				Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,1)
 				if not c:FindFirstChild("Combat") then
