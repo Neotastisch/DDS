@@ -9,6 +9,8 @@ local adverbmsg = getgenv().adverbmsg
 
 local alts = getgenv().alts
 
+local cancelbring = false
+
 local fps = getgenv().fps
 
 local webhook = getgenv().webhook
@@ -114,6 +116,7 @@ end)()
 
 
 function BringPlr(Target,POS)
+	cancelbring = false
 	if Target.Character and Target.Character:FindFirstChild("Humanoid") then
 		
 		
@@ -146,7 +149,7 @@ function BringPlr(Target,POS)
 				end
 				c.Combat:Activate()
 			
-			until not TargetPlr or not TargetChar or not c or not c:FindFirstChild("BodyEffects") or not c.BodyEffects:FindFirstChild("K.O") or not c.BodyEffects:FindFirstChild("Grabbed")  or c.BodyEffects["K.O"].Value == true or c.BodyEffects.Grabbed.Value ~= nil or not TargetChar or not TargetChar:FindFirstChild("BodyEffects") or not TargetChar.BodyEffects:FindFirstChild("K.O") or TargetChar.BodyEffects["K.O"].Value == true		
+			until not TargetPlr or not TargetChar or not c or not c:FindFirstChild("BodyEffects") or not c.BodyEffects:FindFirstChild("K.O") or not c.BodyEffects:FindFirstChild("Grabbed")  or c.BodyEffects["K.O"].Value == true or c.BodyEffects.Grabbed.Value ~= nil or not TargetChar or not TargetChar:FindFirstChild("BodyEffects") or not TargetChar.BodyEffects:FindFirstChild("K.O") or TargetChar.BodyEffects["K.O"].Value or cancelbring == true		
 			Root.CFrame = CFrame.new(TargetChar.LowerTorso.Position)*CFrame.new(0,3,0)
 			if c.BodyEffects.Grabbed.Value ~= nil then
 
@@ -348,8 +351,13 @@ local function onChatted(p,msg)
         end
          if Args[1] == prefix.."bring" then
             if player.name == bringer then
+	    if Args[2] == "stop" then
+	   cancelbring = true
+	    return
+	end
 	    game.Players.LocalPlayer.Character.Head.Anchored = false
             local targetHumanoid = GetPlayerFromString(Args[2])
+		
 	    if Args[3] then
 	    BringPlr(targetHumanoid,BringLocations[Args[3]])		
 	    else
