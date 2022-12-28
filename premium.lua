@@ -74,6 +74,24 @@ getgenv().cashdropped = 0
 local stopcash = 0
 
 
+local oldHealth = player.Character:FindFirstChild("Humanoid").Health
+
+player.Character:FindFirstChild("Humanoid").HealthChanged:Connect(function(newHealth)
+
+    if newHealth < oldHealth then
+game.Players.LocalPlayer.Character.Head.Anchored = false
+        player.Character.HumanoidRootPart.Position = Vector3.new(player.Character.HumanoidRootPart.Position.X, player.Character.HumanoidRootPart.Position.Y+5, player.Character.HumanoidRootPart.Position.Z)
+			game.Players.LocalPlayer.Character.Head.Anchored = true
+			wait(0.1)
+			game.Players.LocalPlayer.Character.Head.Anchored = false
+	player.Character.HumanoidRootPart.Position = Vector3.new(player.Character.HumanoidRootPart.Position.X, player.Character.HumanoidRootPart.Position.Y-5, player.Character.HumanoidRootPart.Position.Z)
+game.Players.LocalPlayer.Character.Head.Anchored = true
+
+    end
+
+end)
+
+
 
 function SendMessage(Webhook, Message, Botname)
    local Name;
