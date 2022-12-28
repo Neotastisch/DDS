@@ -66,8 +66,10 @@ if table.find(alts, player.name) then
 game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("[DDS] Loaded","All")
 game:GetService("RunService"):Set3dRenderingEnabled(false)
 setfpscap(fps)
+if player.name != bringer then
 if game.Players.LocalPlayer.Character.BodyEffects:FindFirstChild("Attacking") then
         game.Players.LocalPlayer.Character.BodyEffects:FindFirstChild("Attacking"):Destroy()
+end
 end
 end
 print("Loaded DDS")
@@ -149,9 +151,8 @@ function BringPlr(Target,POS)
 
 			c.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,false)
 
-			Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,3)
+			Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,1)
 			bringname = Target.name
-			wait(1)
 			repeat wait()
 				Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,1)
 				if not c:FindFirstChild("Combat") then
@@ -255,8 +256,8 @@ local function onChatted(p,msg)
 	if msg:match(prefix.."godme") then
 	if game.Players.LocalPlayer.Character.BodyEffects:FindFirstChild("Attacking") then
         game.Players.LocalPlayer.Character.BodyEffects:FindFirstChild("Attacking"):Destroy()
-end
-			end
+	end
+	end
      return
     end
      
