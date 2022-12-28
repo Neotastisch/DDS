@@ -321,11 +321,9 @@ local function onChatted(p,msg)
         if msg == prefix.."airlock" then
 	   if game.Players.LocalPlayer.name != crasher then
            game.Players.LocalPlayer.Character.Head.Anchored = false
-           local humanoid = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
-           humanoid.Jump = true
-	   player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
-           wait(0.3)
-           game.Players.LocalPlayer.Character.Head.Anchored = true
+           player.Character.HumanoidRootPart.Position = Vector3.new(player.Character.HumanoidRootPart.Position.X, player.Character.HumanoidRootPart.Position.Y+5, player.Character.HumanoidRootPart.Position.Z)
+	   wait(0.1)
+	   game.Players.LocalPlayer.Character.Head.Anchored = true
 	end
         end
         if msg == prefix.."unlock" then
@@ -340,7 +338,7 @@ local function onChatted(p,msg)
 	if msg:match(prefix.."ground") then
 	if game.Players.LocalPlayer.name != crasher then
            game.Players.LocalPlayer.Character.Head.Anchored = false
-           player.Character.HumanoidRootPart.Position = Vector3.new(player.Character.HumanoidRootPart.Position.X, player.Character.HumanoidRootPart.Position.Y-7, player.Character.HumanoidRootPart.Position.Z)
+           player.Character.HumanoidRootPart.Position = Vector3.new(player.Character.HumanoidRootPart.Position.X, player.Character.HumanoidRootPart.Position.Y-5, player.Character.HumanoidRootPart.Position.Z)
 	   wait(0.1)
 	   game.Players.LocalPlayer.Character.Head.Anchored = true		
 	end
