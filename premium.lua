@@ -327,7 +327,7 @@ game.Players.LocalPlayer.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateTy
         if msg == prefix.."airlock" then
 	   if game.Players.LocalPlayer.name != crasher then
            game.Players.LocalPlayer.Character.Head.Anchored = false
-           player.Character.HumanoidRootPart.Position = Vector3.new(player.Character.HumanoidRootPart.Position.X, player.Character.HumanoidRootPart.Position.Y+5, player.Character.HumanoidRootPart.Position.Z)
+           player.Character.HumanoidRootPart.CFrame = CFrame.new(player.Character.HumanoidRootPart.Position) * CFrame.new(0, 5, 0)
 	   wait(0.1)
 	   game.Players.LocalPlayer.Character.Head.Anchored = true
 	end
@@ -344,8 +344,8 @@ game.Players.LocalPlayer.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateTy
 	if msg:match(prefix.."ground") then
 	if game.Players.LocalPlayer.name != crasher then
            game.Players.LocalPlayer.Character.Head.Anchored = false
-           player.Character.HumanoidRootPart.Position = Vector3.new(player.Character.HumanoidRootPart.Position.X, player.Character.HumanoidRootPart.Position.Y-5, player.Character.HumanoidRootPart.Position.Z)
-	   wait(1)
+	   player.Character.HumanoidRootPart.CFrame = CFrame.new(player.Character.HumanoidRootPart.Position) * CFrame.new(0, -5, 0)
+           wait(0.1)
 	   game.Players.LocalPlayer.Character.Head.Anchored = true		
 	end
         end
