@@ -139,6 +139,7 @@ function BringPlr(Target,POS)
 			CmdSettings["IsLocking"] = true
 
 			c.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,false)
+			
 
 			Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,1)
 
@@ -252,10 +253,13 @@ local function onChatted(p,msg)
 
         if msg == prefix.."drop" then
 	    if player.name == crasher then return end
-            withlimit = false
+	
+player.Character.HumanoidRootPart.Position = Vector3.new(player.Character.HumanoidRootPart.Position.X, player.Character.HumanoidRootPart.Position.Y+1, player.Character.HumanoidRootPart.Position.Z)		
+game.Players.LocalPlayer.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,true)
+	withlimit = false
             dropping = true
             game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Start","All")
-	    c.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,true)
+	    
         end
         if msg:match(prefix.."fps") then
            setfpscap(tonumber(string.split(msg," ")[2]))
@@ -263,6 +267,8 @@ local function onChatted(p,msg)
         end
         if msg:match(prefix.."cdrop") then
 	            if player.name == crasher then return end
+player.Character.HumanoidRootPart.Position = Vector3.new(player.Character.HumanoidRootPart.Position.X, player.Character.HumanoidRootPart.Position.Y+1, player.Character.HumanoidRootPart.Position.Z)		
+game.Players.LocalPlayer.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,true)
             stopcash = string.gsub(string.split(msg," ")[2], "mil", "000000")
             stopcash = string.gsub(stopcash, "k", "000")
             stopcash = tonumber(stopcash)
@@ -336,13 +342,14 @@ local function onChatted(p,msg)
 	if game.Players.LocalPlayer.name != crasher then
            game.Players.LocalPlayer.Character.Head.Anchored = false
            player.Character.HumanoidRootPart.Position = Vector3.new(player.Character.HumanoidRootPart.Position.X, player.Character.HumanoidRootPart.Position.Y-5, player.Character.HumanoidRootPart.Position.Z)
-	   wait(0.1)
+	   wait(1)
 	   game.Players.LocalPlayer.Character.Head.Anchored = true		
 	end
         end
         if msg == prefix.."host" then
             print("Moving to admin.")
 	game.Players.LocalPlayer.Character.Head.Anchored = false
+	    wait(0.1)
             local targetPlayer = Players:FindFirstChild(admin)
             Players.LocalPlayer.Character.HumanoidRootPart.CFrame = targetPlayer.Character.HumanoidRootPart.CFrame
             player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
