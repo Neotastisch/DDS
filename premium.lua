@@ -195,7 +195,7 @@ function BringPlr(Target,POS)
 
 			game:GetService("ReplicatedStorage").MainEvent:FireServer(unpack(args))
 
-			wait(0.5)
+			wait(1)
 			Root.CFrame = currentPos
 			player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
 			wait(0.1)
