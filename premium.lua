@@ -385,6 +385,7 @@ game.Players.LocalPlayer.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateTy
 	    local c = game.Players.LocalPlayer.Character
 	    local Root = c.HumanoidRootPart
 	    local TargetChar = targetHumanoid.Character
+	    Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,1)
 	    while loopkill do
 	    Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,1)
 				if not c:FindFirstChild("Combat") then
@@ -398,7 +399,7 @@ game.Players.LocalPlayer.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateTy
         if msg:match(prefix.."setup") then
             for i, v in ipairs(alts) do
                 if v == player.name then
-					game.Players.LocalPlayer.Character.Head.Anchored = false
+		    game.Players.LocalPlayer.Character.Head.Anchored = false
                     player.Character.HumanoidRootPart.CFrame = CFrame.new(adminpositions[i][1],adminpositions[i][2],adminpositions[i][3])
                     player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
 		    wait(0.1)
