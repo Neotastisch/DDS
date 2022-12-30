@@ -380,11 +380,12 @@ game.Players.LocalPlayer.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateTy
 	    loopkill = not loopkill
 	    game.Players.LocalPlayer.Character.Head.Anchored = false
 	    wait(0.1)
-	    c.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,false)
+	    
             local targetHumanoid = GetPlayerFromString(Args[2])
 	    local c = game.Players.LocalPlayer.Character
 	    local Root = c.HumanoidRootPart
 	    local TargetChar = targetHumanoid.Character
+	    c.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,false)
 	    Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,1)
 	    while loopkill do
 	    Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,1)
