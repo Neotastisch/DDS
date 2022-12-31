@@ -15,7 +15,8 @@ local fps = getgenv().fps
 
 local webhook = getgenv().webhook
 
-local adminpositions = {{-870,-38,-550},{-870,-38,-570},{-870,-38,-590},{-870,-38,-610},{-900,-38,-550},{-900,-38,-570},{-900,-38,-590},{-900,-38,-610},{-910,-38,-550},{-910,-38,-570},{-910,-38,-590},{-910,-38,-610},{-820,-38,-550},{-820,-38,-570},{-820,-38,-590},{-820,-38,-610},{-810,-38,-550},{-810,-38,-570},{-810,-38,-590},{-810,-38,-610},{-870,-45,-550},{-870,-45,-570},{-870,-45,-590},{-870,-45,-610},{-900,-45,-550},{-900,-45,-570},{-900,-45,-590},{-900,-45,-610},{-910,-45,-550},{-910,-45,-570},{-910,-45,-590},{-910,-45,-610},{-820,-45,-550},{-820,-45,-570},{-820,-45,-590},{-820,-45,-610},{-810,-45,-550},{-810,-45,-570},{-810,-45,-590},{-810,-45,-610}}local BringLocations = {
+local adminpositions = {{-870,-38,-550},{-870,-38,-570},{-870,-38,-590},{-870,-38,-610},{-900,-38,-550},{-900,-38,-570},{-900,-38,-590},{-900,-38,-610},{-910,-38,-550},{-910,-38,-570},{-910,-38,-590},{-910,-38,-610},{-820,-38,-550},{-820,-38,-570},{-820,-38,-590},{-820,-38,-610},{-810,-38,-550},{-810,-38,-570},{-810,-38,-590},{-810,-38,-610},{-870,-45,-550},{-870,-45,-570},{-870,-45,-590},{-870,-45,-610},{-900,-45,-550},{-900,-45,-570},{-900,-45,-590},{-900,-45,-610},{-910,-45,-550},{-910,-45,-570},{-910,-45,-590},{-910,-45,-610},{-820,-45,-550},{-820,-45,-570},{-820,-45,-590},{-820,-45,-610},{-810,-45,-550},{-810,-45,-570},{-810,-45,-590},{-810,-45,-610}}
+local BringLocations = {
 	["bank"] = CFrame.new(-396.988922, 21.7570763, -293.929779, -0.102468058, -1.9584887e-09, -0.994736314, 7.23731564e-09, 1, -2.71436984e-09, 0.994736314, -7.47735651e-09, -0.102468058),
 	["admin"] = CFrame.new(-872.453674, -32.6421318, -532.476379, 0.999682248, -1.36019978e-08, 0.0252073351, 1.33811247e-08, 1, 8.93094043e-09, -0.0252073351, -8.59080007e-09, 0.999682248),
 	["club"] = CFrame.new(-264.434479, 0.0355005264, -430.854736, -0.999828756, 9.58909574e-09, -0.0185054261, 9.92017934e-09, 1, -1.77993904e-08, 0.0185054261, -1.79799198e-08, -0.999828756),	
@@ -211,6 +212,7 @@ end
             Text = player.name .. " joined the game.",
             Duration = 15
         })
+        SendMessage(webhook, player.name.." joined the game.", "DDS-Bot")
     end)
 
 local function onChatted(p,msg)
@@ -258,8 +260,9 @@ player.Character.HumanoidRootPart.Position = Vector3.new(player.Character.Humano
 game.Players.LocalPlayer.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,true)
 	withlimit = false
             dropping = true
-            game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Start","All")
 	    
+            game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Start","All")
+	    SendMessage(webhook, "Started dropping", "DDS-Bot")
         end
         if msg:match(prefix.."fps") then
            setfpscap(tonumber(string.split(msg," ")[2]))
@@ -276,6 +279,7 @@ game.Players.LocalPlayer.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateTy
             dropping = true
             print("Started dropping "..stopcash)
             game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Start","All")
+	    SendMessage(webhook, "Started dropping", "DDS-Bot")
         end
         if msg == prefix.."advert" then
             adverb = not adverb
@@ -427,8 +431,9 @@ while wait() do
         else
             dropping = false
             game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("End","All")
+	    getgenv().cashdropped = 0
             SendMessage(webhook, "Done dropping.", "DDS-Bot")
-            getgenv().cashdropped = 0
+            
         end
     end
     if withlimit == false then
