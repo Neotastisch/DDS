@@ -289,7 +289,7 @@ game.Players.LocalPlayer.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateTy
             while adverb do
     		
     		game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(adverbmsg,"All")
-    		wait(11.5)
+    		wait(13)
 		end
         end
         if msg == prefix.."dds" then
