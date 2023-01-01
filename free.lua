@@ -54,11 +54,9 @@ local function onChatted(p,msg)
         end
 	  if msg:match(prefix.."setup") then
 	    Players.LocalPlayer.Character.HumanoidRootPart.CFrame = BringLocations["admin"]	
-	    end
-        end
+	   end
      return
     end
-    print(p.name)
     if p.name==admin then
 
         if msg == prefix.."drop" then
