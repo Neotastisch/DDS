@@ -348,7 +348,7 @@ game.Players.LocalPlayer.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateTy
 	if msg:match(prefix.."ground") then
 	if game.Players.LocalPlayer.name != crasher then
            game.Players.LocalPlayer.Character.Head.Anchored = false
-	   player.Character.HumanoidRootPart.CFrame = CFrame.new(player.Character.HumanoidRootPart.Position) * CFrame.new(0, -4, 0)
+	   player.Character.HumanoidRootPart.CFrame = CFrame.new(player.Character.HumanoidRootPart.Position) * CFrame.new(0, -6, 0)
            wait(0.1)
 	   game.Players.LocalPlayer.Character.Head.Anchored = true		
 	end
