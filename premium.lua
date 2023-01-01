@@ -233,9 +233,11 @@ local function onChatted(p,msg)
 	    else
 	    Players.LocalPlayer.Character.HumanoidRootPart.CFrame = BringLocations[Args[2]]	
 	    end
-            
-            Players.LocalPlayer.Character.HumanoidRootPart.CFrame = targetPlayer.Character.HumanoidRootPart.CFrame
+
         end
+         if msg:match(prefix.."setup") then
+	    Players.LocalPlayer.Character.HumanoidRootPart.CFrame = BringLocations["admin"]	
+	    end
          if msg:match(prefix.."cashcounter") then
 	loadstring(game:HttpGet('https://raw.githubusercontent.com/GS21Official/Seller-Tools/main/DaHood%20Cash%20Counter'))()
         end	
