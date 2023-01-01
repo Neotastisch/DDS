@@ -293,7 +293,7 @@ game.Players.LocalPlayer.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateTy
 		end
         end
         if msg == prefix.."dds" then
-	    game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("This script is using DDS Alt Control","All")
+	    game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("This script is using DDS Alt Control by Neotastisch","All")
         end
         if msg == prefix.."stop" then
             dropping = false
