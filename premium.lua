@@ -407,7 +407,11 @@ game.Players.LocalPlayer.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateTy
             for i, v in ipairs(alts) do
                 if v == player.name then
 		    game.Players.LocalPlayer.Character.Head.Anchored = false
+		    if adminpositions[i] == nil then
+		    player.Character.HumanoidRootPart.CFrame = CFrame.new(adminpositions[1][1],adminpositions[1][2],adminpositions[1][3])			
+		    else
                     player.Character.HumanoidRootPart.CFrame = CFrame.new(adminpositions[i][1],adminpositions[i][2],adminpositions[i][3])
+		    end
                     player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
 		    wait(0.1)
 		    game.Players.LocalPlayer.Character.Head.Anchored = true
