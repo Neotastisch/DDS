@@ -51,8 +51,10 @@ local function onChatted(p,msg)
 	    else
 	    Players.LocalPlayer.Character.HumanoidRootPart.CFrame = BringLocations[Args[2]]	
 	    end
-            
-            Players.LocalPlayer.Character.HumanoidRootPart.CFrame = targetPlayer.Character.HumanoidRootPart.CFrame
+        end
+	  if msg:match(prefix.."setup") then
+	    Players.LocalPlayer.Character.HumanoidRootPart.CFrame = BringLocations["admin"]	
+	    end
         end
      return
     end
