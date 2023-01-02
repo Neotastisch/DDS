@@ -70,7 +70,7 @@ if table.find(alts, player.name) then
 game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("[DDS] Loaded","All")
 game:GetService("RunService"):Set3dRenderingEnabled(false)
 setfpscap(fps)
-if player.name != bringer then
+if player.name ~= bringer then
 if game.Players.LocalPlayer.Character.BodyEffects:FindFirstChild("Attacking") then
         game.Players.LocalPlayer.Character.BodyEffects:FindFirstChild("Attacking"):Destroy()
 end
@@ -332,7 +332,7 @@ game.Players.LocalPlayer.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateTy
             end
         end
         if msg == prefix.."airlock" then
-	   if game.Players.LocalPlayer.name != crasher then
+	   if game.Players.LocalPlayer.name ~= crasher then
            game.Players.LocalPlayer.Character.Head.Anchored = false
            player.Character.HumanoidRootPart.CFrame = CFrame.new(player.Character.HumanoidRootPart.Position) * CFrame.new(0, 4, 0)
 	   wait(0.1)
@@ -343,13 +343,13 @@ game.Players.LocalPlayer.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateTy
            game.Players.LocalPlayer.Character.Head.Anchored = false
         end
         if msg == prefix.."lock" then
-           if game.Players.LocalPlayer.name != crasher then
+           if game.Players.LocalPlayer.name ~= crasher then
            game.Players.LocalPlayer.Character.Head.Anchored = true
 	   player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
 	   end
         end
 	if msg:match(prefix.."ground") then
-	if game.Players.LocalPlayer.name != crasher then
+	if game.Players.LocalPlayer.name ~= crasher then
            game.Players.LocalPlayer.Character.Head.Anchored = false
 	   player.Character.HumanoidRootPart.CFrame = CFrame.new(player.Character.HumanoidRootPart.Position) * CFrame.new(0, -6, 0)
            wait(0.1)
