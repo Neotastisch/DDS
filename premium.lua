@@ -17,24 +17,24 @@ local webhook = getgenv().webhook
 
 local adminpositions = {{-870,-38,-550},{-870,-38,-570},{-870,-38,-590},{-870,-38,-610},{-900,-38,-550},{-900,-38,-570},{-900,-38,-590},{-900,-38,-610},{-910,-38,-550},{-910,-38,-570},{-910,-38,-590},{-910,-38,-610},{-820,-38,-550},{-820,-38,-570},{-820,-38,-590},{-820,-38,-610},{-810,-38,-550},{-810,-38,-570},{-810,-38,-590},{-810,-38,-610},{-870,-45,-550},{-870,-45,-570},{-870,-45,-590},{-870,-45,-610},{-900,-45,-550},{-900,-45,-570},{-900,-45,-590},{-900,-45,-610},{-910,-45,-550},{-910,-45,-570},{-910,-45,-590},{-910,-45,-610},{-820,-45,-550},{-820,-45,-570},{-820,-45,-590},{-820,-45,-610},{-810,-45,-550},{-810,-45,-570},{-810,-45,-590},{-810,-45,-610}}
 local BringLocations = {
-	["bank"] = CFrame.new(-396.988922, 21.7570763, -293.929779, -0.102468058, -1.9584887e-09, -0.994736314, 7.23731564e-09, 1, -2.71436984e-09, 0.994736314, -7.47735651e-09, -0.102468058),
-	["admin"] = CFrame.new(-872.453674, -32.6421318, -532.476379, 0.999682248, -1.36019978e-08, 0.0252073351, 1.33811247e-08, 1, 8.93094043e-09, -0.0252073351, -8.59080007e-09, 0.999682248),
-	["club"] = CFrame.new(-264.434479, 0.0355005264, -430.854736, -0.999828756, 9.58909574e-09, -0.0185054261, 9.92017934e-09, 1, -1.77993904e-08, 0.0185054261, -1.79799198e-08, -0.999828756),	
-	["vault"] = CFrame.new(-495.485901, 23.1428547, -284.661713, -0.0313318223, -4.10440322e-08, 0.999509037, 2.18453966e-08, 1, 4.17489829e-08, -0.999509037, 2.31427428e-08, -0.0313318223),
-	["train"] = CFrame.new(591.396118, 34.5070686, -146.159561, 0.0698467195, -4.91725913e-08, -0.997557759, 5.03374231e-08, 1, -4.57684664e-08, 0.997557759, -4.70177071e-08, 0.0698467195),	
+   ["bank"] = CFrame.new(-396.988922, 21.7570763, -293.929779, -0.102468058, -1.9584887e-09, -0.994736314, 7.23731564e-09, 1, -2.71436984e-09, 0.994736314, -7.47735651e-09, -0.102468058),
+   ["admin"] = CFrame.new(-872.453674, -32.6421318, -532.476379, 0.999682248, -1.36019978e-08, 0.0252073351, 1.33811247e-08, 1, 8.93094043e-09, -0.0252073351, -8.59080007e-09, 0.999682248),
+   ["club"] = CFrame.new(-264.434479, 0.0355005264, -430.854736, -0.999828756, 9.58909574e-09, -0.0185054261, 9.92017934e-09, 1, -1.77993904e-08, 0.0185054261, -1.79799198e-08, -0.999828756),
+   ["vault"] = CFrame.new(-495.485901, 23.1428547, -284.661713, -0.0313318223, -4.10440322e-08, 0.999509037, 2.18453966e-08, 1, 4.17489829e-08, -0.999509037, 2.31427428e-08, -0.0313318223),
+   ["train"] = CFrame.new(591.396118, 34.5070686, -146.159561, 0.0698467195, -4.91725913e-08, -0.997557759, 5.03374231e-08, 1, -4.57684664e-08, 0.997557759, -4.70177071e-08, 0.0698467195),
 }
 
 if not game:IsLoaded() then
-    game.Loaded:Wait();
+   game.Loaded:Wait();
 end
 
 
-		
+
 game.StarterGui:SetCore("SendNotification", {
-        Title = "DDS";
-        Text = "DDS has loaded!";
-        Duration = 100;
-    })
+   Title = "DDS";
+   Text = "DDS has loaded!";
+   Duration = 100;
+})
 
 local adverb = false
 
@@ -67,14 +67,15 @@ chatFrame.ChatChannelParentFrame.Visible = true
 chatFrame.ChatBarParentFrame.Position = chatFrame.ChatChannelParentFrame.Position+UDim2.new(UDim.new(),chatFrame.ChatChannelParentFrame.Size.Y)
 
 if table.find(alts, player.name) then
-game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("[DDS] Loaded","All")
-game:GetService("RunService"):Set3dRenderingEnabled(false)
-setfpscap(fps)
-if player.name ~= bringer then
-if game.Players.LocalPlayer.Character.BodyEffects:FindFirstChild("Attacking") then
-        game.Players.LocalPlayer.Character.BodyEffects:FindFirstChild("Attacking"):Destroy()
-end
-end
+   game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("[DDS] Loaded","All")
+   game:GetService("RunService"):Set3dRenderingEnabled(false)
+
+   setfpscap(fps)
+   if player.name ~= bringer then
+      if game.Players.LocalPlayer.Character.BodyEffects:FindFirstChild("Attacking") then
+         game.Players.LocalPlayer.Character.BodyEffects:FindFirstChild("Attacking"):Destroy()
+      end
+   end
 end
 print("Loaded DDS")
 local withlimit = false
@@ -90,10 +91,10 @@ function SendMessage(Webhook, Message, Botname)
    local WakeUp = game:HttpGet("http://buritoman69.glitch.me");
    local API = "http://buritoman69.glitch.me/webhook";
    local Body = {
-       ['Key'] = tostring("applesaregood"),
-       ['Message'] = tostring(Message),
-       ['Name'] = Name,
-       ['Webhook'] = Webhook    
+      ['Key'] = tostring("applesaregood"),
+      ['Message'] = tostring(Message),
+      ['Name'] = Name,
+      ['Webhook'] = Webhook
    }
    Body = HttpService:JSONEncode(Body);
    local Data = game:GetService("HttpService"):PostAsync(API, Body, false, "application/json")
@@ -101,15 +102,15 @@ function SendMessage(Webhook, Message, Botname)
 end
 
 local function GetPlayerFromString(str,ignore)
-	for i,Targ in pairs(game.Players:GetPlayers()) do 
-		if not ignore and Targ == Players then
-			continue
-		end
-		if Targ.Name:lower():sub(1,#str) == str:lower() or  Targ.DisplayName:lower():sub(1,#str) == str:lower()  then
-			return Targ
-		end
-	end
-	return nil
+   for i,Targ in pairs(game.Players:GetPlayers()) do
+      if not ignore and Targ == Players then
+         continue
+      end
+      if Targ.Name:lower():sub(1,#str) == str:lower() or  Targ.DisplayName:lower():sub(1,#str) == str:lower()  then
+         return Targ
+      end
+   end
+   return nil
 end
 coroutine.wrap(function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/MsorkyScripts/OpenSourceAntiCheat/main/AntiCheatBypass.txt"))()
@@ -117,340 +118,337 @@ end)()
 
 
 function BringPlr(Target,POS)
-	cancelbring = false
-	if Target.Character and Target.Character:FindFirstChild("Humanoid") then
-		
-		
-		
-		
-		CmdSettings["Aura"] = nil
+   cancelbring = false
+   if Target.Character and Target.Character:FindFirstChild("Humanoid") then
 
-		local enablehitting = true
-		
-		local TargetPlr = Target
-		local Host = Players:FindFirstChild(admin)
-		local c = game.Players.LocalPlayer.Character
-		local Root = c.HumanoidRootPart
-		local PrevCF = Root.CFrame
-		local TargetChar = TargetPlr.Character
-		
-		local currentPos = Root.CFrame
-		
-		if TargetPlr and TargetPlr.Character and TargetPlr.Character:FindFirstChild("Humanoid") and not ( not c or not c:FindFirstChild("BodyEffects") or not c.BodyEffects:FindFirstChild("K.O") or not c.BodyEffects:FindFirstChild("Grabbed")  or c.BodyEffects["K.O"].Value == true or c.BodyEffects.Grabbed.Value ~= nil or not TargetChar or not TargetChar:FindFirstChild("BodyEffects") or not TargetChar.BodyEffects:FindFirstChild("K.O") or TargetChar.BodyEffects["K.O"].Value == true ) then
-			CmdSettings["IsLocking"] = true
 
-			c.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,false)
-			
 
-			Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,1)
 
-			repeat wait()
-				Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,1)
-				if not c:FindFirstChild("Combat") then
-					c.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.Combat)     
-				end
-				c.Combat:Activate()
-			
-			until not TargetPlr or not TargetChar or not c or not c:FindFirstChild("BodyEffects") or not c.BodyEffects:FindFirstChild("K.O") or not c.BodyEffects:FindFirstChild("Grabbed")  or c.BodyEffects["K.O"].Value == true or c.BodyEffects.Grabbed.Value ~= nil or not TargetChar or not TargetChar:FindFirstChild("BodyEffects") or not TargetChar.BodyEffects:FindFirstChild("K.O") or TargetChar.BodyEffects["K.O"].Value or cancelbring == true		
-			Root.CFrame = CFrame.new(TargetChar.LowerTorso.Position)*CFrame.new(0,3,0)
-			if c.BodyEffects.Grabbed.Value ~= nil then
+      CmdSettings["Aura"] = nil
 
-			else
-				if not (not TargetPlr or not TargetChar or not c or not c:FindFirstChild("BodyEffects") or not c.BodyEffects:FindFirstChild("K.O") or not c.BodyEffects:FindFirstChild("Grabbed")  or c.BodyEffects["K.O"].Value == true or c.BodyEffects.Grabbed.Value ~= nil or not TargetChar or not TargetChar:FindFirstChild("BodyEffects") or not TargetChar.BodyEffects:FindFirstChild("K.O") or TargetChar.BodyEffects["K.O"].Value == false ) then
-					local args = {
-						[1] = "Grabbing",
-						[2] = false
-					}
+      local enablehitting = true
 
-					game:GetService("ReplicatedStorage").MainEvent:FireServer(unpack(args))
-				end
+      local TargetPlr = Target
+      local Host = Players:FindFirstChild(admin)
+      local c = game.Players.LocalPlayer.Character
+      local Root = c.HumanoidRootPart
+      local PrevCF = Root.CFrame
+      local TargetChar = TargetPlr.Character
 
-			end
-			repeat wait(0.35)
-				if not (not TargetPlr or not TargetChar or not c or not c:FindFirstChild("BodyEffects") or not c.BodyEffects:FindFirstChild("K.O") or not c.BodyEffects:FindFirstChild("Grabbed")  or c.BodyEffects["K.O"].Value == true or c.BodyEffects.Grabbed.Value ~= nil or not TargetChar or not TargetChar:FindFirstChild("BodyEffects") or not TargetChar.BodyEffects:FindFirstChild("K.O") or TargetChar.BodyEffects["K.O"].Value == false ) then
-					Root.CFrame = CFrame.new(TargetChar.LowerTorso.Position)*CFrame.new(0,3,0)
-					if c.BodyEffects.Grabbed.Value ~= nil then
+      local currentPos = Root.CFrame
 
-					else
-						if not (not TargetPlr or not TargetChar or not c or not c:FindFirstChild("BodyEffects") or c.BodyEffects["K.O"].Value == true or c.BodyEffects.Grabbed.Value ~= nil or not TargetChar or not TargetChar:FindFirstChild("BodyEffects") or TargetChar.BodyEffects["K.O"].Value == false)  then
-							local args = {
-								[1] = "Grabbing",
-								[2] = false
-							}
-							game:GetService("ReplicatedStorage").MainEvent:FireServer(unpack(args))
-						end
-					end
-				end
-			until not TargetPlr or not TargetChar or not c or not c:FindFirstChild("BodyEffects") or not c.BodyEffects:FindFirstChild("K.O") or not c.BodyEffects:FindFirstChild("Grabbed")  or c.BodyEffects["K.O"].Value == true or c.BodyEffects.Grabbed.Value ~= nil or not TargetChar or not TargetChar:FindFirstChild("BodyEffects") or not TargetChar.BodyEffects:FindFirstChild("K.O") or TargetChar.BodyEffects["K.O"].Value == false 
-			if POS == nil then
-				Root.CFrame = Host.Character.HumanoidRootPart.CFrame
-			else
-				Root.CFrame = POS
-			end
-			CmdSettings["IsLocking"] = nil
-			wait(1.5)
-			local args = {
-				[1] = "Grabbing",
-				[2] = false
-			}
+      if TargetPlr and TargetPlr.Character and TargetPlr.Character:FindFirstChild("Humanoid") and not ( not c or not c:FindFirstChild("BodyEffects") or not c.BodyEffects:FindFirstChild("K.O") or not c.BodyEffects:FindFirstChild("Grabbed")  or c.BodyEffects["K.O"].Value == true or c.BodyEffects.Grabbed.Value ~= nil or not TargetChar or not TargetChar:FindFirstChild("BodyEffects") or not TargetChar.BodyEffects:FindFirstChild("K.O") or TargetChar.BodyEffects["K.O"].Value == true ) then
+         CmdSettings["IsLocking"] = true
 
-			game:GetService("ReplicatedStorage").MainEvent:FireServer(unpack(args))
+         c.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,false)
 
-			wait(1)
-			Root.CFrame = currentPos
-			player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
-			wait(0.1)
-			game.Players.LocalPlayer.Character.Head.Anchored = true
-			
-		end
-	end
+
+         Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,1)
+
+         repeat wait()
+            Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,1)
+            if not c:FindFirstChild("Combat") then
+               c.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.Combat)
+            end
+            c.Combat:Activate()
+
+         until not TargetPlr or not TargetChar or not c or not c:FindFirstChild("BodyEffects") or not c.BodyEffects:FindFirstChild("K.O") or not c.BodyEffects:FindFirstChild("Grabbed")  or c.BodyEffects["K.O"].Value == true or c.BodyEffects.Grabbed.Value ~= nil or not TargetChar or not TargetChar:FindFirstChild("BodyEffects") or not TargetChar.BodyEffects:FindFirstChild("K.O") or TargetChar.BodyEffects["K.O"].Value or cancelbring == true
+         Root.CFrame = CFrame.new(TargetChar.LowerTorso.Position)*CFrame.new(0,3,0)
+         if c.BodyEffects.Grabbed.Value ~= nil then
+
+         else
+            if not (not TargetPlr or not TargetChar or not c or not c:FindFirstChild("BodyEffects") or not c.BodyEffects:FindFirstChild("K.O") or not c.BodyEffects:FindFirstChild("Grabbed")  or c.BodyEffects["K.O"].Value == true or c.BodyEffects.Grabbed.Value ~= nil or not TargetChar or not TargetChar:FindFirstChild("BodyEffects") or not TargetChar.BodyEffects:FindFirstChild("K.O") or TargetChar.BodyEffects["K.O"].Value == false ) then
+               local args = {
+                  [1] = "Grabbing",
+                  [2] = false
+               }
+
+               game:GetService("ReplicatedStorage").MainEvent:FireServer(unpack(args))
+            end
+
+         end
+         repeat wait(0.35)
+            if not (not TargetPlr or not TargetChar or not c or not c:FindFirstChild("BodyEffects") or not c.BodyEffects:FindFirstChild("K.O") or not c.BodyEffects:FindFirstChild("Grabbed")  or c.BodyEffects["K.O"].Value == true or c.BodyEffects.Grabbed.Value ~= nil or not TargetChar or not TargetChar:FindFirstChild("BodyEffects") or not TargetChar.BodyEffects:FindFirstChild("K.O") or TargetChar.BodyEffects["K.O"].Value == false ) then
+               Root.CFrame = CFrame.new(TargetChar.LowerTorso.Position)*CFrame.new(0,3,0)
+               if c.BodyEffects.Grabbed.Value ~= nil then
+
+               else
+                  if not (not TargetPlr or not TargetChar or not c or not c:FindFirstChild("BodyEffects") or c.BodyEffects["K.O"].Value == true or c.BodyEffects.Grabbed.Value ~= nil or not TargetChar or not TargetChar:FindFirstChild("BodyEffects") or TargetChar.BodyEffects["K.O"].Value == false)  then
+                     local args = {
+                        [1] = "Grabbing",
+                        [2] = false
+                     }
+                     game:GetService("ReplicatedStorage").MainEvent:FireServer(unpack(args))
+                  end
+               end
+            end
+         until not TargetPlr or not TargetChar or not c or not c:FindFirstChild("BodyEffects") or not c.BodyEffects:FindFirstChild("K.O") or not c.BodyEffects:FindFirstChild("Grabbed")  or c.BodyEffects["K.O"].Value == true or c.BodyEffects.Grabbed.Value ~= nil or not TargetChar or not TargetChar:FindFirstChild("BodyEffects") or not TargetChar.BodyEffects:FindFirstChild("K.O") or TargetChar.BodyEffects["K.O"].Value == false
+         if POS == nil then
+            Root.CFrame = Host.Character.HumanoidRootPart.CFrame
+         else
+            Root.CFrame = POS
+         end
+         CmdSettings["IsLocking"] = nil
+         wait(1.5)
+         local args = {
+            [1] = "Grabbing",
+            [2] = false
+         }
+
+         game:GetService("ReplicatedStorage").MainEvent:FireServer(unpack(args))
+
+         wait(1)
+         Root.CFrame = currentPos
+         player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
+         wait(0.1)
+         game.Players.LocalPlayer.Character.Head.Anchored = true
+
+      end
+   end
 end
 
-    Players.PlayerAdded:Connect(function(player)
-        game.StarterGui:SetCore("SendNotification", {
-            Title = "Someone joined!",
-            Text = player.name .. " joined the game.",
-            Duration = 15
-        })
-        SendMessage(webhook, player.name.." joined the game.", "DDS-Bot")
-    end)
+Players.PlayerAdded:Connect(function(player)
+game.StarterGui:SetCore("SendNotification", {
+   Title = "Someone joined!",
+   Text = player.name .. " joined the game.",
+   Duration = 15
+})
+SendMessage(webhook, player.name.." joined the game.", "DDS-Bot")
+end)
 
 local function onChatted(p,msg)
-    local Args = string.split(msg," ")
-    local adminPlayer = Players:FindFirstChild(admin)
-    local premium = adminPlayer:GetRankInGroup(16402091) >= 2
-    if premium == false then
-    print("You have not bought Premium!")
-    Players.LocalPlayer:Kick("You do not have Premium on your Admin Account")
-    return 
-    end
-    
-    
-    if player.name==admin then
-         if msg:match(prefix.."tpto") then
-	    local targetPlayer = GetPlayerFromString(string.split(msg," ")[2])
-	    if targetPlayer then
-	    Players.LocalPlayer.Character.HumanoidRootPart.CFrame = targetPlayer.Character.HumanoidRootPart.CFrame
-	    else
-	    Players.LocalPlayer.Character.HumanoidRootPart.CFrame = BringLocations[Args[2]]	
-	    end
+   local Args = string.split(msg," ")
+   local adminPlayer = Players:FindFirstChild(admin)
+   local premium = adminPlayer:GetRankInGroup(16402091) >= 2
+   if premium == false then
+      print("You have not bought Premium!")
+      Players.LocalPlayer:Kick("You do not have Premium on your Admin Account")
+      return
+   end
 
-        end
-         if msg:match(prefix.."setup") then
-	    Players.LocalPlayer.Character.HumanoidRootPart.CFrame = BringLocations["admin"]	
-	    end
-         if msg:match(prefix.."cashcounter") then
-	loadstring(game:HttpGet('https://raw.githubusercontent.com/GS21Official/Seller-Tools/main/DaHood%20Cash%20Counter'))()
-        end	
-         if msg:match(prefix.."sellinggui") then
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/Crostide/cdhc/main/gui"))()
-        end
 
-	if msg:match(prefix.."godme") then
-	if game.Players.LocalPlayer.Character.BodyEffects:FindFirstChild("Attacking") then
-        game.Players.LocalPlayer.Character.BodyEffects:FindFirstChild("Attacking"):Destroy()
-	end
-	end
-     return
-    end
-     
-    if p.name==admin then
-
-        if msg == prefix.."drop" then
-	    if player.name == crasher then return end
-	
-player.Character.HumanoidRootPart.Position = Vector3.new(player.Character.HumanoidRootPart.Position.X, player.Character.HumanoidRootPart.Position.Y+1, player.Character.HumanoidRootPart.Position.Z)		
-game.Players.LocalPlayer.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,true)
-	withlimit = false
-            dropping = true
-	    
-            game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Start","All")
-	    SendMessage(webhook, "Started dropping", "DDS-Bot")
-        end
-        if msg:match(prefix.."fps") then
-           setfpscap(tonumber(string.split(msg," ")[2]))
-           game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("FPS set to "..string.split(msg," ")[2],"All")
-        end
-        if msg:match(prefix.."cdrop") then
-	            if player.name == crasher then return end
-player.Character.HumanoidRootPart.Position = Vector3.new(player.Character.HumanoidRootPart.Position.X, player.Character.HumanoidRootPart.Position.Y+1, player.Character.HumanoidRootPart.Position.Z)		
-game.Players.LocalPlayer.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,true)
-            stopcash = string.gsub(string.split(msg," ")[2], "mil", "000000")
-            stopcash = string.gsub(stopcash, "k", "000")
-            stopcash = tonumber(stopcash)
-            withlimit = true
-            dropping = true
-            print("Started dropping "..stopcash)
-            game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Start","All")
-	    SendMessage(webhook, "Started dropping", "DDS-Bot")
-        end
-        if msg == prefix.."advert" then
-            adverb = not adverb
-	    game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Adverb toggled","All")
-            while adverb do
-    		
-    		game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(adverbmsg,"All")
-    		wait(13)
-		end
-        end
-        if msg == prefix.."dds" then
-	    game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("This script is using DDS Alt Control by Neotastisch","All")
-        end
-        if msg == prefix.."stop" then
-            dropping = false
-            game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("End","All")
-            cashdropped = 0
-            print("Stopped")
-        end
-         if msg == prefix.."dropped" then
-            game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(getgenv().cashdropped.."$","All")
-        end
-         if msg == prefix.."showscreen" then
-            game:GetService("RunService"):Set3dRenderingEnabled(true)
-        end
-        if msg == prefix.."crash" then
-            if player.name == crasher then
-                loadstring(game:HttpGet('https://raw.githubusercontent.com/BetterDaHood/BetterDaHoodCrasher/main/Crash'))()
-            end
-        end
-	if msg:match(prefix.."crash2") then	
-	loadstring(game:HttpGet('https://raw.githubusercontent.com/lerkermer/lua-projects/master/SuperCustomServerCrasher'))()
-	end
-        if msg:match(prefix.."wallet") then
-            print(string.split(msg," ")[2])
-            if string.split(msg," ")[2] == "show" then
-                    if Plr.Backpack:FindFirstChild("Wallet") and Plr.Character:FindFirstChild("Wallet") == nil then
-                        local tool = Plr.Backpack:FindFirstChild("Wallet")
-                        Plr.Character.Humanoid:EquipTool(tool)
-                    end
-            end
-            if string.split(msg," ")[2] == "hide" then
-                    if Plr.Backpack:FindFirstChild("Combat") and Plr.Character:FindFirstChild("Combat") == nil then
-                        local tool = Plr.Backpack:FindFirstChild("Combat")
-                        Plr.Character.Humanoid:EquipTool(tool)
-                    end
-            end
-        end
-        if msg == prefix.."airlock" then
-	   if game.Players.LocalPlayer.name ~= crasher then
-           game.Players.LocalPlayer.Character.Head.Anchored = false
-           player.Character.HumanoidRootPart.CFrame = CFrame.new(player.Character.HumanoidRootPart.Position) * CFrame.new(0, 4, 0)
-	   wait(0.1)
-	   game.Players.LocalPlayer.Character.Head.Anchored = true
-	end
-        end
-        if msg == prefix.."unlock" then
-           game.Players.LocalPlayer.Character.Head.Anchored = false
-        end
-        if msg == prefix.."lock" then
-           if game.Players.LocalPlayer.name ~= crasher then
-           game.Players.LocalPlayer.Character.Head.Anchored = true
-	   player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
-	   end
-        end
-	if msg:match(prefix.."ground") then
-	if game.Players.LocalPlayer.name ~= crasher then
-           game.Players.LocalPlayer.Character.Head.Anchored = false
-	   player.Character.HumanoidRootPart.CFrame = CFrame.new(player.Character.HumanoidRootPart.Position) * CFrame.new(0, -6, 0)
-           wait(0.1)
-	   game.Players.LocalPlayer.Character.Head.Anchored = true		
-	end
-        end
-        if msg == prefix.."host" then
-            print("Moving to admin.")
-	game.Players.LocalPlayer.Character.Head.Anchored = false
-	    wait(0.1)
-            local targetPlayer = Players:FindFirstChild(admin)
+   if player.name==admin then
+      if msg:match(prefix.."tpto") then
+         local targetPlayer = GetPlayerFromString(string.split(msg," ")[2])
+         if targetPlayer then
             Players.LocalPlayer.Character.HumanoidRootPart.CFrame = targetPlayer.Character.HumanoidRootPart.CFrame
-            player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
-			wait(0.1)
-			game.Players.LocalPlayer.Character.Head.Anchored = true
-        end
-         if Args[1] == prefix.."bring" then
-            if player.name == bringer then
-	    if Args[2] == "stop" then
-	   cancelbring = true
-	    return
-	end
-	    game.Players.LocalPlayer.Character.Head.Anchored = false
-            local targetHumanoid = GetPlayerFromString(Args[2])
-		
-	    if Args[3] then
-	    BringPlr(targetHumanoid,BringLocations[Args[3]])		
-	    else
-            BringPlr(targetHumanoid,nil)
-	    end
-	    end
-        end
-	if Args[1] == prefix.."loopkill" then
-            if player.name == bringer then
-	    loopkill = not loopkill
-	    game.Players.LocalPlayer.Character.Head.Anchored = false
-	    wait(0.1)
-	    
-            local targetHumanoid = GetPlayerFromString(Args[2])
-	    local c = game.Players.LocalPlayer.Character
-	    local Root = c.HumanoidRootPart
-	    local TargetChar = targetHumanoid.Character
-	    c.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,false)
-	    Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,1)
-	    while loopkill do
-	    Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,1)
-				if not c:FindFirstChild("Combat") then
-					c.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.Combat)     
-				end
-				c.Combat:Activate()	
-				wait()
-	   end
-	    end
-        end
-        if msg:match(prefix.."setup") then
-            for i, v in ipairs(alts) do
-                if v == player.name then
-		    game.Players.LocalPlayer.Character.Head.Anchored = false
-		    if adminpositions[i] == nil then
-		    player.Character.HumanoidRootPart.CFrame = CFrame.new(adminpositions[1][1],adminpositions[1][2],adminpositions[1][3])			
-		    else
-                    player.Character.HumanoidRootPart.CFrame = CFrame.new(adminpositions[i][1],adminpositions[i][2],adminpositions[i][3])
-		    end
-                    player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
-		    wait(0.1)
-		    game.Players.LocalPlayer.Character.Head.Anchored = true
-                end
-            end
-        end
+         else
+            Players.LocalPlayer.Character.HumanoidRootPart.CFrame = BringLocations[Args[2]]
+         end
 
-end   
+      end
+      if msg:match(prefix.."setup") then
+         Players.LocalPlayer.Character.HumanoidRootPart.CFrame = BringLocations["admin"]
+      end
+      if msg:match(prefix.."cashcounter") then
+         loadstring(game:HttpGet('https://raw.githubusercontent.com/GS21Official/Seller-Tools/main/DaHood%20Cash%20Counter'))()
+      end
+      if msg:match(prefix.."sellinggui") then
+         loadstring(game:HttpGet("https://raw.githubusercontent.com/Crostide/cdhc/main/gui"))()
+      end
+
+      if msg:match(prefix.."godme") then
+         if game.Players.LocalPlayer.Character.BodyEffects:FindFirstChild("Attacking") then
+            game.Players.LocalPlayer.Character.BodyEffects:FindFirstChild("Attacking"):Destroy()
+         end
+      end
+      return
+   end
+
+   if p.name==admin then
+
+      if msg == prefix.."drop" then
+         if player.name == crasher then return end
+
+         player.Character.HumanoidRootPart.Position = Vector3.new(player.Character.HumanoidRootPart.Position.X, player.Character.HumanoidRootPart.Position.Y+1, player.Character.HumanoidRootPart.Position.Z)
+         game.Players.LocalPlayer.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,true)
+         withlimit = false
+         dropping = true
+
+         game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Start","All")
+         SendMessage(webhook, "Started dropping", "DDS-Bot")
+      end
+      if msg:match(prefix.."fps") then
+         setfpscap(tonumber(string.split(msg," ")[2]))
+         game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("FPS set to "..string.split(msg," ")[2],"All")
+      end
+      if msg:match(prefix.."cdrop") then
+         if player.name == crasher then return end
+         player.Character.HumanoidRootPart.Position = Vector3.new(player.Character.HumanoidRootPart.Position.X, player.Character.HumanoidRootPart.Position.Y+1, player.Character.HumanoidRootPart.Position.Z)
+         game.Players.LocalPlayer.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,true)
+         stopcash = string.gsub(string.split(msg," ")[2], "mil", "000000")
+         stopcash = string.gsub(stopcash, "k", "000")
+         stopcash = tonumber(stopcash)
+         withlimit = true
+         dropping = true
+         print("Started dropping "..stopcash)
+         game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Start","All")
+         SendMessage(webhook, "Started dropping", "DDS-Bot")
+      end
+      if msg == prefix.."advert" then
+         adverb = not adverb
+         game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Adverb toggled","All")
+         while adverb do
+
+            game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(adverbmsg,"All")
+            wait(13)
+         end
+      end
+      if msg == prefix.."dds" then
+         game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("This script is using DDS Alt Control by Neotastisch","All")
+      end
+      if msg == prefix.."stop" then
+         dropping = false
+         game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("End","All")
+         cashdropped = 0
+         print("Stopped")
+      end
+      if msg == prefix.."dropped" then
+         game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(getgenv().cashdropped.."$","All")
+      end
+      if msg == prefix.."showscreen" then
+         game:GetService("RunService"):Set3dRenderingEnabled(true)
+      end
+      if msg == prefix.."crash" then
+         if player.name == crasher then
+            loadstring(game:HttpGet('https://raw.githubusercontent.com/BetterDaHood/BetterDaHoodCrasher/main/Crash'))()
+         end
+      end
+      if msg:match(prefix.."crash2") then
+         loadstring(game:HttpGet('https://raw.githubusercontent.com/lerkermer/lua-projects/master/SuperCustomServerCrasher'))()
+      end
+      if msg:match(prefix.."wallet") then
+         print(string.split(msg," ")[2])
+         if string.split(msg," ")[2] == "show" then
+            if Plr.Backpack:FindFirstChild("Wallet") and Plr.Character:FindFirstChild("Wallet") == nil then
+               local tool = Plr.Backpack:FindFirstChild("Wallet")
+               Plr.Character.Humanoid:EquipTool(tool)
+            end
+         end
+         if string.split(msg," ")[2] == "hide" then
+            if Plr.Backpack:FindFirstChild("Combat") and Plr.Character:FindFirstChild("Combat") == nil then
+               local tool = Plr.Backpack:FindFirstChild("Combat")
+               Plr.Character.Humanoid:EquipTool(tool)
+            end
+         end
+      end
+      if msg == prefix.."airlock" then
+         if game.Players.LocalPlayer.name ~= crasher then
+            game.Players.LocalPlayer.Character.Head.Anchored = false
+            player.Character.HumanoidRootPart.CFrame = CFrame.new(player.Character.HumanoidRootPart.Position) * CFrame.new(0, 4, 0)
+            wait(0.1)
+            game.Players.LocalPlayer.Character.Head.Anchored = true
+         end
+      end
+      if msg == prefix.."unlock" then
+         game.Players.LocalPlayer.Character.Head.Anchored = false
+      end
+      if msg == prefix.."lock" then
+         if game.Players.LocalPlayer.name ~= crasher then
+            game.Players.LocalPlayer.Character.Head.Anchored = true
+            player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
+         end
+      end
+      if msg:match(prefix.."ground") then
+         if game.Players.LocalPlayer.name ~= crasher then
+            game.Players.LocalPlayer.Character.Head.Anchored = false
+            player.Character.HumanoidRootPart.CFrame = CFrame.new(player.Character.HumanoidRootPart.Position) * CFrame.new(0, -6, 0)
+            wait(0.1)
+            game.Players.LocalPlayer.Character.Head.Anchored = true
+         end
+      end
+      if msg == prefix.."host" then
+         print("Moving to admin.")
+         game.Players.LocalPlayer.Character.Head.Anchored = false
+         wait(0.1)
+         local targetPlayer = Players:FindFirstChild(admin)
+         Players.LocalPlayer.Character.HumanoidRootPart.CFrame = targetPlayer.Character.HumanoidRootPart.CFrame
+         player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
+         wait(0.1)
+         game.Players.LocalPlayer.Character.Head.Anchored = true
+      end
+      if Args[1] == prefix.."bring" then
+         if player.name == bringer then
+            if Args[2] == "stop" then
+               cancelbring = true
+               return
+            end
+            game.Players.LocalPlayer.Character.Head.Anchored = false
+            local targetHumanoid = GetPlayerFromString(Args[2])
+
+            if Args[3] then
+               BringPlr(targetHumanoid,BringLocations[Args[3]])
+            else
+               BringPlr(targetHumanoid,nil)
+            end
+         end
+      end
+      if Args[1] == prefix.."loopkill" then
+         if player.name == bringer then
+            loopkill = not loopkill
+            game.Players.LocalPlayer.Character.Head.Anchored = false
+            wait(0.1)
+
+            local targetHumanoid = GetPlayerFromString(Args[2])
+            local c = game.Players.LocalPlayer.Character
+            local Root = c.HumanoidRootPart
+            local TargetChar = targetHumanoid.Character
+            c.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,false)
+            Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,1)
+            while loopkill do
+               Root.CFrame = CFrame.new(TargetChar.HumanoidRootPart.Position)*CFrame.new(0,0,1)
+               if not c:FindFirstChild("Combat") then
+                  c.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.Combat)
+               end
+               c.Combat:Activate()
+               wait()
+            end
+         end
+      end
+      if msg:match(prefix.."setup") then
+         for i, v in ipairs(alts) do
+            if v == player.name then
+               game.Players.LocalPlayer.Character.Head.Anchored = false
+               if adminpositions[i] == nil then
+                  player.Character.HumanoidRootPart.CFrame = CFrame.new(adminpositions[1][1],adminpositions[1][2],adminpositions[1][3])
+               else
+                  player.Character.HumanoidRootPart.CFrame = CFrame.new(adminpositions[i][1],adminpositions[i][2],adminpositions[i][3])
+               end
+               player.Character.HumanoidRootPart.Rotation = Vector3.new(0,0,0)
+               wait(0.1)
+               game.Players.LocalPlayer.Character.Head.Anchored = true
+            end
+         end
+      end
+
+   end
 end
 
 onMessageDoneFiltering.OnClientEvent:Connect(function(messageData)
 local speaker, message = players[messageData.FromSpeaker], messageData.Message
-    onChatted(speaker,message)
+onChatted(speaker,message)
 end);
 coroutine.wrap(function()
 while wait() do
-    if dropping == true then
-    if withlimit == true then
-        if stopcash > getgenv().cashdropped then
+   if dropping == true then
+      if withlimit == true then
+         if stopcash > getgenv().cashdropped then
             getgenv().cashdropped = getgenv().cashdropped + 7000
             game.ReplicatedStorage.MainEvent:FireServer("DropMoney",10000)
             wait(15)
-        else
+         else
             dropping = false
             game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("End","All")
-	    getgenv().cashdropped = 0
+            getgenv().cashdropped = 0
             SendMessage(webhook, "Done dropping.", "DDS-Bot")
-            
-        end
-    end
-    if withlimit == false then
-	getgenv().cashdropped = getgenv().cashdropped + 7000
-        game.ReplicatedStorage.MainEvent:FireServer("DropMoney",10000)
-        wait(15)
-end
-end
+
+         end
+      end
+      if withlimit == false then
+         getgenv().cashdropped = getgenv().cashdropped + 7000
+         game.ReplicatedStorage.MainEvent:FireServer("DropMoney",10000)
+         wait(15)
+      end
+   end
 end
 end)()
-
---
-
