@@ -221,6 +221,7 @@ local function onChatted(p,msg)
     local premium = adminPlayer:GetRankInGroup(16402091) >= 2
     if premium == false then
     print("You have not bought Premium!")
+    Players.LocalPlayer:Kick("You do not have Premium on your Admin Account")
     return 
     end
     
