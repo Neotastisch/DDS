@@ -9,6 +9,8 @@ local adverbmsg = getgenv().adverbmsg
 
 local alts = getgenv().alts
 
+local fpsboost = getgenv().mainfpsboost
+
 local cancelbring = false
 
 local fps = getgenv().fps
@@ -85,6 +87,7 @@ if table.find(alts, player.name) then
 end
 
 if player.name == admin or player.name == bringer or player.name == crasher then
+if fpsboost ~= false then
 t.WaterWaveSize = 0
 t.WaterWaveSpeed = 0
 t.WaterReflectance = 0
@@ -102,6 +105,7 @@ v.Transparency = 1
 elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then 
 v.Lifetime = NumberRange.new(0)
     end
+end
 end
 end
 print("Loaded DDS")
