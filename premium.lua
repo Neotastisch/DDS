@@ -40,6 +40,12 @@ local adverb = false
 
 local loopkill = false
 
+local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
+local g = game
+local w = g.Workspace
+local l = g.Lighting
+local t = w.Terrain
+
 local dropping = false
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer
@@ -71,7 +77,7 @@ if table.find(alts, player.name) then
    game:GetService("RunService"):Set3dRenderingEnabled(false)
 
    setfpscap(fps)
-   if player.name ~= bringer then
+   if player.name ~= bringer or player.name ~= crasher then
       if game.Players.LocalPlayer.Character.BodyEffects:FindFirstChild("Attacking") then
          game.Players.LocalPlayer.Character.BodyEffects:FindFirstChild("Attacking"):Destroy()
       end
@@ -79,11 +85,6 @@ if table.find(alts, player.name) then
 end
 
 if player.name == admin or player.name == bringer or player.name == crasher then
-local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
-local g = game
-local w = g.Workspace
-local l = g.Lighting
-local t = w.Terrain
 t.WaterWaveSize = 0
 t.WaterWaveSpeed = 0
 t.WaterReflectance = 0
